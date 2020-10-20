@@ -14,13 +14,15 @@ client.on('ready', () => {
 
 client.on('message', message => {
 
-    if (message.content === 'ping') {
+    if (message.content === '!joke') {
 
-       message.reply('pong');
+       message.reply('Mountains aren't just funny, they are hill areas');
 
        }
 
 });
+
+
 
  
 
