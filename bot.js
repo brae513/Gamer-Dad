@@ -16,7 +16,7 @@ client.on('message', message => {
 
     if (message.content === '!joke') {
 
-       message.reply('Mountains aren't just funny, they are hill areas');
+       message.reply("Mountains aren\'t just funny, they are hill areas");
 
        }
 
