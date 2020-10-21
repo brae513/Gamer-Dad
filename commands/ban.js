@@ -7,6 +7,7 @@ module.exports = {
 				var guild = message.guild;
 				var hasPerm = false;
 				var gMem = guild.members.fetch(message.author.id);
+				console.log(gMem.permissions);
 				hasPerm = (0x01000000 & gMem.permissions)
 
 				if(!message.mentions.members.size){
