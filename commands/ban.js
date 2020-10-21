@@ -6,11 +6,9 @@ module.exports = {
 			if(message.guild != null && message.guild.id === '599851762400362517'){
 				var guild = message.guild;
 				var hasPerm = false;
-				guild.members.each(member =>{
-					if(member.id==message.author.id){
-						hasPerm = (0x01000000 &member.permissions)
-					}
-				});
+				var gMem = guild.members.fetch(message.author.id);
+				hasPerm = (0x01000000 & gMem.permissions)
+
 				if(!message.mentions.members.size){
 					message.channel.send("You need to mention someone for this command.");
 				}
