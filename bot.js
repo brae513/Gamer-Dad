@@ -28,7 +28,7 @@ client.on('message', message => {
        message.reply("Mountains aren\'t just funny, they are hill areas");
 		fetch(dadJokeSite)
 			.then(res =>{
-				console.log(res);
+				console.log(res.text());
 			});
 		}catch(err){
 			console.log("Error in joke");
@@ -37,18 +37,12 @@ client.on('message', message => {
 	}
 	else if(command === 'insult'){
 		try{
-			message.reply("Insulting");
-			//const res = fetch(insultSite);
 			fetch(insultSite)
 				.then(res => res.json())
 				.then(json =>{
 					console.log(json);
 					message.reply(json.insult);
 				});
-			//let insult = res.json().insult;
-			//insult = insult.charAt(0).toLowerCase() + insult.slice(1);
-			//message.reply("You suck");
-			//message.reply(insult);
 		} catch (err){
 			console.log("Error in insult");
 			console.log(err.stack);
