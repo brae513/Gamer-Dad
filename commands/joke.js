@@ -16,7 +16,7 @@ module.exports = {
 						str=str.substring(start);
 						var end = str.indexOf("</p>");
 						str = str.substring(0,end);
-						message.reply(str);
+						message.channel.send(str);
 					}
 					else{
 						message.reply("Mountains aren\'t just funny, they are hill areas");

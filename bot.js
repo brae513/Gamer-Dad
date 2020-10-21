@@ -4,8 +4,6 @@ const fs = require('fs');
 
 const prefix = "!"
 
-const insultSite = "http://quandyfactory.com/insult/json";
-
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -43,45 +41,6 @@ client.on('message', message => {
 			console.error(error);
 			message.reply('there was an error trying to execute that command!');
 		}
-			
-		/*if (command === 'joke') {
-			try{
-
-			fetch(dadJokeSite)
-				.then(res => res.text())
-				.then(text =>{
-					var str = text;
-					var start = str.lastIndexOf("subtitle");
-					if(start>0){
-						start = start+10;
-						str=str.substring(start);
-						var end = str.indexOf("</p>");
-						str = str.substring(0,end);
-						message.reply(str);
-					}
-					else{
-						message.reply("Mountains aren\'t just funny, they are hill areas");
-						console.log(text);
-					}
-				});
-			}catch(err){
-				console.log("Error in joke");
-				console.log(err.stack);
-			}
-		}
-		else if(command === 'insult'){
-			try{
-				fetch(insultSite)
-					.then(res => res.json())
-					.then(json =>{
-						console.log(json);
-						message.reply(json.insult);
-					});
-			} catch (err){
-				console.log("Error in insult");
-				console.log(err.stack);
-			}
-		}*/
 	} catch (err){
 		console.log("error");
 		console.log(err.stack);
