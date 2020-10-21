@@ -1,8 +1,12 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
+const fetch = require('node-fetch');
 
- 
+const prefix = "!"
+
+	const dadJokeSite = "https://icanhazdadjoke.com";
+	const insultSite = "http://quandyfactory.com/insult/json";
 
 client.on('ready', () => {
 
@@ -13,12 +17,21 @@ client.on('ready', () => {
  
 
 client.on('message', message => {
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    if (message.content === '!joke') {
+	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const command = args.shift().toLowerCase();
 
+    if (command === 'joke') {
+	
        message.reply("Mountains aren\'t just funny, they are hill areas");
 
-       }
+	}
+	else if(command === 'insult'){
+		const res = fetch(insultSite);
+		let insult = res.json().insult;
+		message.reply(insult);
+	}
 
 });
 
