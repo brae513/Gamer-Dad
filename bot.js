@@ -25,7 +25,7 @@ client.on('message', message => {
 				console.log(emoji.name+":"+emoji.id);
 			});
 			
-			message.react(message.guild.emojis.cache.get('768296689105764362'));
+			message.react(message.guild.emojis.cache.get('699139118826913794'));
 		}
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
