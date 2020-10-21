@@ -35,6 +35,7 @@ client.on('message', message => {
 					str=str.substring(start);
 					var end = str.indexOf("</p>");
 					str = str.substring(0,end);
+					message.reply(str);
 				}
 				else{
 				    message.reply("Mountains aren\'t just funny, they are hill areas");
