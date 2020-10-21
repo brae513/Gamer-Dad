@@ -25,11 +25,21 @@ client.on('message', message => {
     if (command === 'joke') {
 		try{
 
-       message.reply("Mountains aren\'t just funny, they are hill areas");
 		fetch(dadJokeSite)
 			.then(res => res.text())
 			.then(text =>{
-				console.log(text);
+				var str = text;
+				var start = str.lastIndexOf("subtitle");
+				if(start>0){
+					start = start+10;
+					str=str.substring(start);
+					var end = str.indexOf("</p>");
+					str = str.substring(0,end);
+				}
+				else{
+				    message.reply("Mountains aren\'t just funny, they are hill areas");
+					console.log(text);
+				}
 			});
 		}catch(err){
 			console.log("Error in joke");
