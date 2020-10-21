@@ -10,7 +10,7 @@ module.exports = {
 				message.guild.emojis.cache.each(emoji=>{
 					console.log(emoji.name+":"+emoji.id);
 				});
-				message.channel.send(message.guild.emojis.cache.get('768315370909859861'));
+				message.channel.send(message.guild.emojis.cache.get('749519699062292540'));
 			}
 			}catch(err){
 				console.log("Error in joke");
