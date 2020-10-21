@@ -28,7 +28,9 @@ client.on('message', message => {
 
 	}
 	else if(command === 'insult'){
+		message.reply("Insulting");
 		const res = fetch(insultSite);
+		message.reply("You suck");
 		let insult = res.json().insult;
 		message.reply(insult);
 	}
