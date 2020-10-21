@@ -30,9 +30,10 @@ client.on('message', message => {
 	else if(command === 'insult'){
 		message.reply("Insulting");
 		const res = fetch(insultSite);
-		//fetch(insultSite).then(insult=>res.json());
-		message.reply("You suck");
-		//message.reply(insult);
+		let insult = res.json().insult;
+		insult = insult.charAt(0).toLowerCase() + insult.slice(1);
+		//message.reply("You suck");
+		message.reply(insult);
 	}
 
 });
