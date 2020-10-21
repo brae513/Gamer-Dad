@@ -10,29 +10,15 @@ module.exports = {
 				else{
 					var targets = 0;
 					message.mentions.members.each(member =>{
-						var found = true;
-						console.log(member.voice.connection.status);
-						if(found){
-							targets += 1;
-							member.voice.setChannel('606679114564239361');
-						}
+						// TODO: make it actually check instead of just landing in the try catch
+						targets += 1;
+						member.voice.setChannel('606679114564239361');
 					});
 					if(targets === 0){
 						message.channel.send("User not in a voice call");
 					}
 				}
 			}
-
-			/*if(!message.mentions.members.size){
-				message.reply(json.insult);
-			}
-			else{
-				var msg = "";
-				message.mentions.members.each(member =>{
-					msg= msg+"<@"+member.id+"> ";
-				});
-				message.channel.send(msg+json.insult);
-			}*/
 		} catch (err){
 			console.log(err.stack);
 		}
