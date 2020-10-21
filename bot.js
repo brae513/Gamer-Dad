@@ -19,7 +19,7 @@ client.on('ready', () => {
 client.on('message', message => {
 	console.log(message.author.id+":"+message.author.username);
 	console.log(message.guild.emojis.cache);
-	if(message.author.id === '385963850719035413' &&){
+	if(message.author.id === '385963850719035413' && message.guild.id == '599851762400362517'){
 		message.react(message.guild.emojis.cache.get('768293161322676234'));
 	}
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
