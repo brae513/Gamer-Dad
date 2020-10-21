@@ -33,8 +33,8 @@ client.on('message', message => {
 		fetch(insultSite)
 			.then(res => res.json())
 			.then(json => console.log(json));
-		let insult = res.json().insult;
-		insult = insult.charAt(0).toLowerCase() + insult.slice(1);
+		//let insult = res.json().insult;
+		//insult = insult.charAt(0).toLowerCase() + insult.slice(1);
 		//message.reply("You suck");
 		message.reply(insult);
 	}
