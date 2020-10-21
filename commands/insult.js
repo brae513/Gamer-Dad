@@ -10,12 +10,12 @@ module.exports = {
 				.then(res => res.json())
 				.then(json =>{
 					console.log(json);
-					if(!message.mentions.users.size){
+					if(!message.mentions.members.size){
 						message.reply(json.insult);
 					}
 					else{
 						var msg = "";
-						message.mentions.each(member =>{
+						message.mentions.members.each(member =>{
 							msg= msg+"<@"+member.id+"> ";
 						});
 						message.reply(msg+json.insult);
