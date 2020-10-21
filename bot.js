@@ -27,8 +27,9 @@ client.on('message', message => {
 
        message.reply("Mountains aren\'t just funny, they are hill areas");
 		fetch(dadJokeSite)
-			.then(res =>{
-				console.log(res.text());
+			.then(res => res.text())
+			.then(text =>{
+				console.log(text);
 			});
 		}catch(err){
 			console.log("Error in joke");
