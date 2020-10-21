@@ -18,13 +18,12 @@ client.on('ready', () => {
 
 client.on('message', message => {
 	try{
-		if(message.author.id === '161975669834776576' && message.guild != null && message.guild.id === '599851762400362517'){
+		if(message.author.id === '147136628215775233' && message.guild != null && message.guild.id === '599851762400362517'){
 			var ca = message.guild.emojis.cache;
-			console.log(ca);
-			ca.each(emoji=>{
-				console.log(emoji.name+":"+emoji.id);
-			});
-			
+			//console.log(ca);
+			//ca.each(emoji=>{
+			//	console.log(emoji.name+":"+emoji.id);
+			//});
 			message.react(message.guild.emojis.cache.get('699139118826913794'));
 		}
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
