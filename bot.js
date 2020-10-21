@@ -36,7 +36,7 @@ client.on('message', message => {
 		//let insult = res.json().insult;
 		//insult = insult.charAt(0).toLowerCase() + insult.slice(1);
 		//message.reply("You suck");
-		message.reply(insult);
+		//message.reply(insult);
 	}
 
 });
