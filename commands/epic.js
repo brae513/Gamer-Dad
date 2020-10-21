@@ -10,11 +10,10 @@ module.exports = {
 				message.guild.emojis.cache.each(emoji=>{
 					//console.log(emoji.name+":"+emoji.id);
 				});
-				//message.channel.send(message.guild.emojis.cache.get('749519699062292540'));
-				message.channel.send(":thatsepicemote:");
+				message.channel.send(`${message.guild.emojis.cache.get('749519699062292540')}`);
+				//message.channel.send(":thatsepicemote:");
 			}
 			}catch(err){
-				console.log("Error in joke");
 				console.log(err.stack);
 			}
 	},
