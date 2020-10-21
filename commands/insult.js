@@ -18,7 +18,7 @@ module.exports = {
 						message.mentions.members.each(member =>{
 							msg= msg+"<@"+member.id+"> ";
 						});
-						message.reply(msg+json.insult);
+						message.channel.send(msg+json.insult);
 					}
 				});
 		} catch (err){
