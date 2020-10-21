@@ -1,3 +1,6 @@
+const fetch = require('node-fetch');
+
+
 module.exports = {
 	name: 'joke',
 	description: 'tells a dad joke',
