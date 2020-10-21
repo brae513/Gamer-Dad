@@ -23,9 +23,17 @@ client.on('message', message => {
 	const command = args.shift().toLowerCase();
 
     if (command === 'joke') {
-	
-       message.reply("Mountains aren\'t just funny, they are hill areas");
+		try{
 
+       message.reply("Mountains aren\'t just funny, they are hill areas");
+		fetch(dadJokeSite)
+			.then(res =>{
+				console.log(res);
+			});
+		}catch(err){
+			console.log("Error in joke");
+			console.log(err.stack);
+		}
 	}
 	else if(command === 'insult'){
 		try{
