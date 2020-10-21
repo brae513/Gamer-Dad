@@ -17,55 +17,59 @@ client.on('ready', () => {
  
 
 client.on('message', message => {
-	console.log(message.author.id+":"+message.author.username);
-	console.log(message.guild.emojis.cache);
-	if(message.author.id === '385963850719035413' && message.guild.id == '599851762400362517'){
-		message.react(message.guild.emojis.cache.get('768293161322676234'));
-	}
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
-
-    if (command === 'joke') {
-		try{
-
-		fetch(dadJokeSite)
-			.then(res => res.text())
-			.then(text =>{
-				var str = text;
-				var start = str.lastIndexOf("subtitle");
-				if(start>0){
-					start = start+10;
-					str=str.substring(start);
-					var end = str.indexOf("</p>");
-					str = str.substring(0,end);
-					message.reply(str);
-				}
-				else{
-				    message.reply("Mountains aren\'t just funny, they are hill areas");
-					console.log(text);
-				}
-			});
-		}catch(err){
-			console.log("Error in joke");
-			console.log(err.stack);
+	try{
+		console.log(message.author.id+":"+message.author.username);
+		console.log(message.guild.emojis.cache);
+		if(message.author.id === '385963850719035413' && message.guild.id == '599851762400362517'){
+			message.react(message.guild.emojis.cache.get('768293161322676234'));
 		}
-	}
-	else if(command === 'insult'){
-		try{
-			fetch(insultSite)
-				.then(res => res.json())
-				.then(json =>{
-					console.log(json);
-					message.reply(json.insult);
+		if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+		const args = message.content.slice(prefix.length).trim().split(/ +/);
+		const command = args.shift().toLowerCase();
+
+		if (command === 'joke') {
+			try{
+
+			fetch(dadJokeSite)
+				.then(res => res.text())
+				.then(text =>{
+					var str = text;
+					var start = str.lastIndexOf("subtitle");
+					if(start>0){
+						start = start+10;
+						str=str.substring(start);
+						var end = str.indexOf("</p>");
+						str = str.substring(0,end);
+						message.reply(str);
+					}
+					else{
+						message.reply("Mountains aren\'t just funny, they are hill areas");
+						console.log(text);
+					}
 				});
-		} catch (err){
-			console.log("Error in insult");
-			console.log(err.stack);
+			}catch(err){
+				console.log("Error in joke");
+				console.log(err.stack);
+			}
 		}
+		else if(command === 'insult'){
+			try{
+				fetch(insultSite)
+					.then(res => res.json())
+					.then(json =>{
+						console.log(json);
+						message.reply(json.insult);
+					});
+			} catch (err){
+				console.log("Error in insult");
+				console.log(err.stack);
+			}
+		}
+	} catch (err){
+		console.log("error");
+		console.log(err.stack);
 	}
-
 });
 
 
