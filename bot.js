@@ -1,12 +1,21 @@
 const Discord = require('discord.js');
-
-const client = new Discord.Client();
 const fetch = require('node-fetch');
+const fs = require('fs');
 
 const prefix = "!"
 
-	const dadJokeSite = "https://icanhazdadjoke.com";
-	const insultSite = "http://quandyfactory.com/insult/json";
+const insultSite = "http://quandyfactory.com/insult/json";
+
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
+
+
 
 client.on('ready', () => {
 
@@ -19,11 +28,6 @@ client.on('ready', () => {
 client.on('message', message => {
 	try{
 		if(message.author.id === '147136628215775233' && message.guild != null && message.guild.id === '599851762400362517'){
-			var ca = message.guild.emojis.cache;
-			//console.log(ca);
-			//ca.each(emoji=>{
-			//	console.log(emoji.name+":"+emoji.id);
-			//});
 			message.react(message.guild.emojis.cache.get('699139118826913794'));
 		}
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -31,7 +35,16 @@ client.on('message', message => {
 		const args = message.content.slice(prefix.length).trim().split(/ +/);
 		const command = args.shift().toLowerCase();
 
-		if (command === 'joke') {
+		if (!client.commands.has(command)) return;
+
+		try {
+			client.commands.get(command).execute(message, args);
+		} catch (error) {
+			console.error(error);
+			message.reply('there was an error trying to execute that command!');
+		}
+			
+		/*if (command === 'joke') {
 			try{
 
 			fetch(dadJokeSite)
@@ -68,7 +81,7 @@ client.on('message', message => {
 				console.log("Error in insult");
 				console.log(err.stack);
 			}
-		}
+		}*/
 	} catch (err){
 		console.log("error");
 		console.log(err.stack);
