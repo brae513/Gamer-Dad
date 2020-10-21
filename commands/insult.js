@@ -6,7 +6,7 @@ module.exports = {
 	description: 'tells a victorian insult.',
 	execute(message, args) {
 		try{
-			fetch(insultSite)
+			fetch("http://quandyfactory.com/insult/json")
 				.then(res => res.json())
 				.then(json =>{
 					console.log(json);
