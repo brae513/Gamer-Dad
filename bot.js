@@ -28,8 +28,8 @@ client.on('message', message => {
 
 	}
 	else if(command === 'insult'){
-		//message.reply("Insulting");
-		//const res = fetch(insultSite);
+		message.reply("Insulting");
+		const res = fetch(insultSite);
 		//fetch(insultSite).then(insult=>res.json());
 		message.reply("You suck");
 		//message.reply(insult);
