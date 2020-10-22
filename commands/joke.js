@@ -23,9 +23,9 @@ module.exports = {
 						console.log(text);
 					}
 				});
-			}catch(err){
-				console.log("Error in joke");
-				console.log(err.stack);
-			}
+		}catch(err){
+			console.log("Error in joke");
+			console.log(err.stack);
+		}
 	},
 };
