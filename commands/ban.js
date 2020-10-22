@@ -6,7 +6,8 @@ module.exports = {
 			if(message.guild != null && message.guild.id === '599851762400362517'){
 				var guild = message.guild;
 				var hasPerm = false;
-				var gMem = guild.members.fetch(message.author.id);
+				var gMem = guild.members.fetch(message.author);
+				console.log(gMem);
 				console.log(gMem.permissions);
 				hasPerm = (0x01000000 & gMem.permissions)
 
