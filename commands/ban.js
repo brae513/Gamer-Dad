@@ -13,6 +13,7 @@ module.exports = {
 						hasPerm = (0x01000000 & perm);
 					});*/
 					hasPerm = gMem.hasPermission("MOVE_MEMBERS");
+					console.log(hasPerm);
 				});
 				
 
