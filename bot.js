@@ -28,8 +28,13 @@ client.on('message', message => {
 		if(message.author.id === '147136628215775233' && message.guild != null && message.guild.id === '599851762400362517'){
 			message.react(message.guild.emojis.cache.get('699139118826913794'));
 			message.react(message.guild.emojis.cache.get('768625855286476812'));
-			if(message.content.toLowerCase().indexOf("rockdust")>=0){
+			var msg = message.content.toLowerCase();
+			if(msg.indexOf("rockdust")>=0){
 				//client.
+			}
+			else if(msg.indexOf("sex")>=0){
+				message.reply("How about no");
+				message.delete();
 			}
 		}
 		//console.log(client.
