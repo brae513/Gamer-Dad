@@ -14,7 +14,7 @@ module.exports = {
 						});
 				}
 				else{
-					guild.members.fetch(message.author).then(gMem=>{
+					message.guild.members.fetch(message.author).then(gMem=>{
 						console.log(gMem);
 						if(gMem.hasPermission("DEAFEN_MEMBERS")){
 							var anyDeaf = false;
