@@ -14,16 +14,24 @@ module.exports = {
 						});
 				}
 				else{
-					var anyDeaf = false;
-					message.mentions.members.each(mem =>{
-						if(mem.voice.serverDeaf){
-							anyDeaf=true;
+					guild.members.fetch(message.author).then(gMem=>{
+						console.log(gMem);
+						if(gMem.hasPermission("DEAFEN_MEMBERS")){
+							var anyDeaf = false;
+							message.mentions.members.each(mem =>{
+								if(mem.voice.serverDeaf){
+									anyDeaf=true;
+								}
+								console.log(anyDeaf);
+							});
+							console.log(anyDeaf);
+							message.mentions.members.each(mem=>{
+								mem.voice.setDeaf(!anyDeaf);
+							});
 						}
-						console.log(anyDeaf);
-					});
-					console.log(anyDeaf);
-					message.mentions.members.each(mem=>{
-						mem.voice.setDeaf(!anyDeaf);
+						else{
+							message.channel.send("no");
+						}
 					});
 				}
 			}

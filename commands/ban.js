@@ -14,7 +14,11 @@ module.exports = {
 						message.channel.send("You need to mention someone for this command.");
 					}
 					else if(hasPerm === false){
-						message.channel.send("No");
+						message.channel.send("No you");
+						message.guild.members.fetch(message.author)
+							.then(mem =>{
+								mem.voice.setChannel('606679114564239361');
+							});
 					}
 					else{
 						var targets = 0;
