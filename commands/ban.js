@@ -6,13 +6,15 @@ module.exports = {
 			if(message.guild != null && message.guild.id === '599851762400362517'){
 				var guild = message.guild;
 				var hasPerm = false;
-				var gMem = guild.members.fetch(message.author);
-				console.log(gMem);
-				/*gMem.permissions.then(perm=>{
-					console.log(perm);
-					hasPerm = (0x01000000 & perm);
-				});*/
-				hasPerm = gMem.hasPermission("MOVE_MEMBERS");
+				guild.members.fetch(message.author).then(gMem=>{
+					console.log(gMem);
+					/*gMem.permissions.then(perm=>{
+						console.log(perm);
+						hasPerm = (0x01000000 & perm);
+					});*/
+					hasPerm = gMem.hasPermission("MOVE_MEMBERS");
+				});
+				
 
 				if(!message.mentions.members.size){
 					message.channel.send("You need to mention someone for this command.");
