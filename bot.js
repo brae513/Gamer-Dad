@@ -30,14 +30,17 @@ client.on('message', message => {
 			message.react(message.guild.emojis.cache.get('768625855286476812'));
 			var msg = message.content.toLowerCase();
 			if(msg.indexOf("rockdust")>=0){
-				//client.
+				message.guild.members.fetch(client.user).then(mem =>{
+					mem.setNickname("Rockdust");
+					message.channel.send("Yes, that's me");
+					mem.setNickname("Gamer Dad");
+				});
 			}
 			else if(msg.indexOf("sex")>=0){
 				message.reply("How about no");
 				message.delete();
 			}
 		}
-		//console.log(client.
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 		const args = message.content.slice(prefix.length).trim().split(/ +/);
