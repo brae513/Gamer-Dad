@@ -10,6 +10,7 @@ module.exports = {
 				message.guild.emojis.cache.each(emoji=>{
 					//console.log(emoji.name+":"+emoji.id);
 				});
+				message.delete();
 				message.channel.send(`${message.guild.emojis.cache.get('749519699062292540')}`);
 				//message.channel.send(":thatsepicemote:");
 			}

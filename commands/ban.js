@@ -8,7 +8,7 @@ module.exports = {
 				var hasPerm = false;
 				var gMem = guild.members.fetch(message.author);
 				console.log(gMem);
-				gMem.permissions(perm=>{
+				gMem.permissions.then(perm=>{
 					console.log(perm);
 					hasPerm = (0x01000000 & perm);
 				});
