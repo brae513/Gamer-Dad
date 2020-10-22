@@ -8,10 +8,11 @@ module.exports = {
 				var hasPerm = false;
 				var gMem = guild.members.fetch(message.author);
 				console.log(gMem);
-				gMem.permissions.then(perm=>{
+				/*gMem.permissions.then(perm=>{
 					console.log(perm);
 					hasPerm = (0x01000000 & perm);
-				});
+				});*/
+				hasPerm = gMem.hasPermission("MOVE_MEMBERS");
 
 				if(!message.mentions.members.size){
 					message.channel.send("You need to mention someone for this command.");
