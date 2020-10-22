@@ -14,26 +14,27 @@ module.exports = {
 					});*/
 					hasPerm = gMem.hasPermission("MOVE_MEMBERS");
 					console.log(hasPerm);
+					if(!message.mentions.members.size){
+						message.channel.send("You need to mention someone for this command.");
+					}
+					else if(hasPerm == false){
+						message.channel.send("No");
+					}
+					else{
+						var targets = 0;
+						message.mentions.members.each(member =>{
+							// TODO: make it actually check instead of just landing in the try catch
+							targets += 1;
+							member.voice.setChannel('606679114564239361');
+						});
+						if(targets === 0){
+							message.channel.send("User not in a voice call");
+						}
+					}
 				});
 				
 
-				if(!message.mentions.members.size){
-					message.channel.send("You need to mention someone for this command.");
-				}
-				else if(hasPerm == false){
-					message.channel.send("No");
-				}
-				else{
-					var targets = 0;
-					message.mentions.members.each(member =>{
-						// TODO: make it actually check instead of just landing in the try catch
-						targets += 1;
-						member.voice.setChannel('606679114564239361');
-					});
-					if(targets === 0){
-						message.channel.send("User not in a voice call");
-					}
-				}
+				
 			}
 		} catch (err){
 			console.log(err.stack);
