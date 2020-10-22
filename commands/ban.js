@@ -3,21 +3,17 @@ module.exports = {
 	description: 'bans someone',
 	execute(message, args) {
 		try{
+		//Diego might be epic
 			if(message.guild != null && message.guild.id === '599851762400362517'){
 				var guild = message.guild;
-				var hasPerm = false;
 				guild.members.fetch(message.author).then(gMem=>{
 					console.log(gMem);
-					/*gMem.permissions.then(perm=>{
-						console.log(perm);
-						hasPerm = (0x01000000 & perm);
-					});*/
-					hasPerm = gMem.hasPermission("MOVE_MEMBERS");
+					var hasPerm = gMem.hasPermission("MOVE_MEMBERS");
 					console.log(hasPerm);
 					if(!message.mentions.members.size){
 						message.channel.send("You need to mention someone for this command.");
 					}
-					else if(hasPerm == false){
+					else if(hasPerm === false){
 						message.channel.send("No");
 					}
 					else{
