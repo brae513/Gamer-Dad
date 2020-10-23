@@ -6,7 +6,7 @@ module.exports = {
 	description: 'randomizes the bot\'s status',
 	execute(client, message, args) {
 		try{
-			var people = [ "diego","caleb","smeag","race","marc","brae","erick","joe"];
+			var people = [ "Diego","Kaleb","Smeag","Race","Marc","Brae","Erick","Joeboi"];
 			var games = [ "tic tac toe","minesweeper","rock paper scissors"];
 			var person = people[Math.floor(Math.random()*people.length)];
 			var game = games[Math.floor(Math.random()*games.length)];
