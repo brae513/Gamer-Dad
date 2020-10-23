@@ -13,12 +13,11 @@ module.exports = {
 			//var msg = game+" against "+person+" and crushing them";
 			client.user.setPresence({
 				status: "online",  //You can show online, idle....
-				game: {
+				activity: {
 					name: game+" against "+person+" and crushing them",  //The message shown
 					type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
 				}
-			});
-			console.log(client.user.presence);
+			}).then(pres=>console.log(pres););
 		}catch(err){
 			console.log(err.stack);
 		}
