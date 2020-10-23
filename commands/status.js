@@ -18,6 +18,7 @@ module.exports = {
 					type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
 				}
 			});
+			console.log(client.user.presence);
 		}catch(err){
 			console.log(err.stack);
 		}
