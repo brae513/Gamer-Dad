@@ -18,8 +18,6 @@ module.exports = {
 					type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
 				}
 			});
-			var selected = Math.floor(Math.random()*gifs.length);
-			message.channel.send(gifs[selected]);
 		}catch(err){
 			console.log(err.stack);
 		}
