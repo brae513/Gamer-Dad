@@ -11,7 +11,7 @@ module.exports = {
 					"https://tenor.com/view/inugami-korone-gif-18362148",
 					"https://tenor.com/view/korone-hololive-inugami-korone-smile-dancing-gif-17703887",
 					"https://tenor.com/view/inugami-korone-holo-live-fortnite-dance-meme-gif-17034919"];
-			console.log(gifs.length());
+			console.log(gifs.length);
 			console.log(Math.random()*gifs.length);
 			var selected = Math.floor(Math.random()*gifs.length);
 			console.log(selected);
