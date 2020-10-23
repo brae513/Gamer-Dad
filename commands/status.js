@@ -10,7 +10,6 @@ module.exports = {
 			var games = [ "tic tac toe","minesweeper","rock paper scissors"];
 			var person = people[Math.floor(Math.random()*people.length)];
 			var game = games[Math.floor(Math.random()*games.length)];
-			//var msg = game+" against "+person+" and crushing them";
 			client.user.setPresence({
 				status: "online",  //You can show online, idle....
 				activity: {

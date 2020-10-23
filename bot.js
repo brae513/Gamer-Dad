@@ -25,21 +25,31 @@ client.on('ready', () => {
 
 client.on('message', message => {
 	try{
-		if(message.author.id === '147136628215775233' && message.guild != null && message.guild.id === '599851762400362517'){
-			message.react(message.guild.emojis.cache.get('699139118826913794'));
-			message.react(message.guild.emojis.cache.get('768625855286476812'));
-			var msg = message.content.toLowerCase();
-			if(msg.indexOf("rockdust")>=0){
-				message.guild.members.fetch(client.user).then(mem =>{
-					mem.setNickname("Rockdust");
-					message.channel.send("Yes, that's me");
-					mem.setNickname("Gamer Dad");
-				});
+		if(message.guild != null && message.guild.id === '599851762400362517'){
+			
+			if(message.author.id === '147136628215775233'){
+				message.react(message.guild.emojis.cache.get('699139118826913794'));
+				message.react(message.guild.emojis.cache.get('768625855286476812'));
+				var msg = message.content.toLowerCase();
+				if(msg.indexOf("rockdust")>=0){
+					message.guild.members.fetch(client.user).then(mem =>{
+						mem.setNickname("Rockdust");
+						message.channel.send("Yes, that's me");
+						mem.setNickname("Gamer Dad");
+					});
+				}
+				else if(msg.indexOf("sex")>=0){
+					message.reply("How about no");
+					message.delete();
+				}
 			}
-			else if(msg.indexOf("sex")>=0){
-				message.reply("How about no");
-				message.delete();
+			else{
+				var content = message.content;
+				if(content.indexOf('love') >= 0 && content.indexOf('dad') >=0){
+					message.channel.send("I love you too");
+				}
 			}
+			
 		}
 		if (!message.content.startsWith(prefix) || message.author.bot) return;
 
