@@ -17,7 +17,7 @@ module.exports = {
 					name: game+" against "+person+" and crushing them",  //The message shown
 					type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
 				}
-			}).then(pres=>console.log(pres););
+			}).then(pres=>console.log(pres));
 		}catch(err){
 			console.log(err.stack);
 		}
