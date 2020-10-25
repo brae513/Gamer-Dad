@@ -26,7 +26,7 @@ client.on('ready', () => {
 client.on('message', message => {
 	try{
 		if(message.guild != null && message.guild.id === '599851762400362517'){
-			
+			var content = message.content;
 			if(message.author.id === '147136628215775233'){
 				message.react(message.guild.emojis.cache.get('699139118826913794'));
 				message.react(message.guild.emojis.cache.get('768625855286476812'));
@@ -44,10 +44,12 @@ client.on('message', message => {
 				}
 			}
 			else{
-				var content = message.content;
 				if(content.indexOf('love') >= 0 && content.indexOf('dad') >=0){
 					message.channel.send("I love you too");
 				}
+			}
+			if(content.indexOf('joeboi' >=0 || content.indexOf('joedust'>=0){
+				message.channel.send("Joeboi");
 			}
 			
 		}
