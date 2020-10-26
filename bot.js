@@ -54,9 +54,9 @@ client.on('message', message => {
 			if(content.indexOf('joeboi') >=0 || content.indexOf('joedust')>=0){
 				message.channel.send("joeboi");
 			}
-			if(Math.random()<0.5){
-				for(var i=0;i<1;i++){
-					message.guild.channels.resolve("618845562262913066").send("Test");
+			if(Math.random()<=0.03){
+				for(var i=0;i<3;i++){
+					message.guild.channels.resolve("618845562262913066").send("<@184876569054019584> <@378445325351780366> Rockdust");
 				}
 			}
 			
