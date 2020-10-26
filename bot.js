@@ -49,7 +49,7 @@ client.on('message', message => {
 				}
 			}
 			if(content.indexOf('joeboi') >=0 || content.indexOf('joedust')>=0){
-				message.channel.send("Joeboi");
+				message.channel.send("joeboi");
 			}
 			
 		}
