@@ -43,7 +43,7 @@ client.on('message', message => {
 			// 618845562262913066 bot channel
 
 			var content = message.content.toLowerCase();
-			if(message.author.id === '147136628215775233' && false){
+			if(message.author.id === '147136628215775233'){
 				message.react(message.guild.emojis.cache.get('699139118826913794'));
 				message.react(message.guild.emojis.cache.get('768625855286476812'));
 				var msg = message.content.toLowerCase();
