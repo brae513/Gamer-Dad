@@ -12,7 +12,7 @@ module.exports = {
 			else{
 				message.channel.send("RTX off");
 			}
-				
+			rtx=!rtx;
 						
 		}catch(err){
 			console.log(err.stack);
