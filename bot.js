@@ -21,7 +21,15 @@ client.on('ready', () => {
 
 });
 
- 
+client.on('messageReactionAdd', reaction => {
+	var message = reaction.message;
+	if(message.guild != null && message.guild.id === '599851762400362517'){
+		if(reaction.emoji.equals(message.guild.emojis.cache.get('699139118826913794')) && reaction.count >=5 && (!reaction.me || (message.author.id === '147136628215775233' && reaction.count==5))){
+			message.reply("Wow, that's stupid");
+			message.react(message.guild.emojis.cache.get('699139118826913794')).then(console.log());
+		}
+	}
+});
 
 client.on('message', message => {
 	try{
