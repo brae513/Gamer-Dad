@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-	name: 'losHomies',
+	name: 'loshomies',
 	description: 'Los Homies',
 	execute(message, args) {
 		try{

@@ -7,9 +7,9 @@ module.exports = {
 			if(message.guild != null && message.guild.id === '599851762400362517'){
 				var guild = message.guild;
 				guild.members.fetch(message.author).then(gMem=>{
-					console.log(gMem);
+					//console.log(gMem);
 					var hasPerm = gMem.hasPermission("MOVE_MEMBERS");
-					console.log(hasPerm);
+					//console.log(hasPerm);
 					if(!message.mentions.members.size){
 						message.channel.send("You need to mention someone for this command.");
 					}
