@@ -28,7 +28,7 @@ client.on('messageReactionAdd', reaction => {
 			//if(reaction.emoji.id===('699139118826913794') && reaction.count >=5 && !reaction.me || (message.author.id === '147136628215775233' && reaction.count==5))){
 			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5){
 				if(message.author.id === '147136628215775233'){
-					if(message.reactions.resolve('709979168598786049').me){
+					if(message.reactions.resolve('709979168598786049') && message.reactions.resolve('709979168598786049').me){
 						return;
 					}
 					else{
