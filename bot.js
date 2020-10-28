@@ -25,9 +25,22 @@ client.on('messageReactionAdd', reaction => {
 	try{
 		var message = reaction.message;
 		if(message.guild != null && message.guild.id === '599851762400362517'){
-			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5 && (!reaction.me || (message.author.id === '147136628215775233' && reaction.count==5))){
+			//if(reaction.emoji.id===('699139118826913794') && reaction.count >=5 && !reaction.me || (message.author.id === '147136628215775233' && reaction.count==5))){
+			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5){
+				if(message.author.id === '147136628215775233'){
+					if(message.reactions.resolve('709979168598786049').me){
+						return;
+					}
+					else{
+						message.react(message.guild.emojis.cache.get('709979168598786049')).then(console.log());
+					}
+				}
+				else if(reaction.me){
+					return;
+				}
 				message.reply("Wow, that's stupid");
 				message.react(message.guild.emojis.cache.get('699139118826913794')).then(console.log());
+				//https://cdn.discordapp.com/emojis/709979168598786049.png?v=1
 			}
 		}
 	} catch (err){
@@ -61,7 +74,12 @@ client.on('message', message => {
 			}
 			else{
 				if(content.indexOf('love') >= 0 && content.indexOf('dad') >=0){
-					message.channel.send("I love you too");
+					if(message.author.id === '378445325351780366'){
+						message.channel.send("I disown you");
+					}
+					else{
+						message.channel.send("I love you too");
+					}	
 				}
 			}
 			if(content.indexOf('joeboi') >=0 || content.indexOf('joedust')>=0){
