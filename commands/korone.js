@@ -11,7 +11,9 @@ module.exports = {
 					"https://tenor.com/view/inugami-korone-gif-18362148",
 					"https://tenor.com/view/inugamikorone-korone-koronelfr-lfrhahaha-gif-18833720",
 					"https://tenor.com/view/korone-hololive-inugami-korone-smile-dancing-gif-17703887",
-					"https://tenor.com/view/inugami-korone-holo-live-fortnite-dance-meme-gif-17034919"];
+					"https://tenor.com/view/inugami-korone-holo-live-fortnite-dance-meme-gif-17034919",
+					"https://tenor.com/view/no-no-no-yes-korone-anime-no-anime-yes-gif-18621939",
+					"https://tenor.com/view/korone-inugami-hololive-inugami-korone-doggo-gif-17711372"];
 			var selected = Math.floor(Math.random()*gifs.length);
 			message.channel.send(gifs[selected]);
 		}catch(err){
