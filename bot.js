@@ -25,7 +25,6 @@ client.on('messageReactionAdd', reaction => {
 	try{
 		var message = reaction.message;
 		if(message.guild != null && message.guild.id === '599851762400362517'){
-			//if(reaction.emoji.id===('699139118826913794') && reaction.count >=5 && !reaction.me || (message.author.id === '147136628215775233' && reaction.count==5))){
 			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5){
 				if(message.author.id === '147136628215775233'){
 					if(message.reactions.resolve('709979168598786049') && message.reactions.resolve('709979168598786049').me){
@@ -40,7 +39,6 @@ client.on('messageReactionAdd', reaction => {
 				}
 				message.reply("Wow, that's stupid");
 				message.react(message.guild.emojis.cache.get('699139118826913794')).then(console.log());
-				//https://cdn.discordapp.com/emojis/709979168598786049.png?v=1
 			}
 		}
 	} catch (err){
@@ -67,7 +65,7 @@ client.on('message', message => {
 						mem.setNickname("Gamer Dad");
 					});
 				}
-				else if(msg.indexOf("sex")>=0){
+				else if(msg.indexOf("sex")>=0 || msg.indexOf("s3x")>=0){
 					message.reply("How about no");
 					message.delete();
 				}
