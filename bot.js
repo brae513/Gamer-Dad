@@ -83,7 +83,7 @@ client.on('message', message => {
 			if(content.indexOf('joeboi') >=0 || content.indexOf('joedust')>=0){
 				message.channel.send("joeboi");
 			}
-			if(content.indexOf('/kill rockdust')>=0){
+			/*if(content.indexOf('/kill rockdust')>=0){
 				message.guild.members.fetch('378445325351780366')
 					.then(mem =>{
 						mem.voice.kick();
@@ -92,7 +92,7 @@ client.on('message', message => {
 					.then(mem =>{
 						mem.voice.kick();
 					});
-			}
+			}*/
 			if(Math.random()<=0.03){
 				for(var i=0;i<3;i++){
 					//message.guild.channels.resolve("618845562262913066").send("<@184876569054019584> <@378445325351780366> Rockdust");
