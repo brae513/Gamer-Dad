@@ -57,8 +57,7 @@ client.on('message', message => {
 			if(message.author.id === '147136628215775233'){
 				message.react(message.guild.emojis.cache.get('699139118826913794'));
 				message.react(message.guild.emojis.cache.get('768625855286476812'));
-				message.react(message.guild.emojis.cache.get('791184167277953077'));
-				
+				message.react(message.guild.emojis.cache.get('790115323671347201'));
 				var msg = message.content.toLowerCase();
 				if(msg.indexOf("rockdust")>=0){
 					message.guild.members.fetch(client.user).then(mem =>{
