@@ -65,7 +65,7 @@ function newYearsReminder(){
 		else if(seconds ==0){
 			client.guilds.fetch('599851762400362517').then(guild=>{
 				console.log("new years reminder");
-				guild.channels.resolve('618845562262913066').send("Happy new years gamers!\nWelcome to "+year);
+				guild.channels.resolve('599851762400362519').send("Happy new years gamers!\nWelcome to "+year);
 			});
 		}
 			
