@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 
 module.exports = {
-	name: 'newYears',
+	name: 'newyears',
 	description: 'new years countdown',
 	execute(message, args) {
 		try{
