@@ -15,7 +15,9 @@ for (const file of commandFiles) {
 
 function newYearsReminder(){
 	try{
-		var countDownDate = new Date("Jan 1, 2021 08:00:00").getTime();
+		var year = 1900+ new Date().getYear();
+		var nextNewYears = "Jan 1, "+year+" 08:00:00";
+		var countDownDate = new Date(nextNewYears).getTime();
 		var now = new Date().getTime();
 
 		// Find the distance between now and the count down date
@@ -27,7 +29,7 @@ function newYearsReminder(){
 		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 		console.log("seconds:"+seconds);
-		if(seconds<=1){
+		if(seconds<1){
 			var str = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds +" seconds remaining.<@385963850719035413>"
 			client.guilds.fetch('599851762400362517').then(guild=>{
 				console.log(guild);
