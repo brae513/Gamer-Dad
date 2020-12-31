@@ -28,11 +28,11 @@ function newYearsReminder(){
 		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-		console.log("seconds:"+seconds);
+		//console.log("seconds:"+seconds);
 		if(seconds<1 && seconds>-1){
 			var str = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds +" seconds remaining.<@385963850719035413>"
 			client.guilds.fetch('599851762400362517').then(guild=>{
-				console.log(guild);
+				console.log("new years reminder");
 				guild.channels.resolve('618845562262913066').send(str);
 			});
 		}
