@@ -6,7 +6,7 @@ module.exports = {
 	description: 'that\'s epic',
 	execute(message, args) {
 		try{
-			var countDownDate = new Date("Jan 1, 2021 0:0:0").getTime();
+			var countDownDate = new Date("Jan 1, 2021 00:00:00").getTime();
 			var now = new Date().getTime();
 
 			// Find the distance between now and the count down date
