@@ -6,11 +6,13 @@ module.exports = {
 	description: 'new years countdown',
 	execute(message, args) {
 		try{
+			console.log("New years");
 			var countDownDate = new Date("Jan 1, 2021 00:00:00").getTime();
 			var now = new Date().getTime();
 
 			// Find the distance between now and the count down date
 			var distance = countDownDate - now;
+			console.log(distance);
 
 			// Time calculations for days, hours, minutes and seconds
 			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
