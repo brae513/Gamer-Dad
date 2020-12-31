@@ -2,8 +2,8 @@ const fetch = require('node-fetch');
 
 
 module.exports = {
-	name: 'epic',
-	description: 'that\'s epic',
+	name: 'newYears',
+	description: 'new years countdown',
 	execute(message, args) {
 		try{
 			var countDownDate = new Date("Jan 1, 2021 00:00:00").getTime();
