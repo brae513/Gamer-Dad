@@ -7,7 +7,7 @@ module.exports = {
 	execute(message, args) {
 		try{
 			console.log("New years");
-			var countDownDate = new Date("Jan 1, 2021 00:00:00").getTime();
+			var countDownDate = new Date("Jan 1, 2021 06:00:00").getTime();
 			var now = new Date().getTime();
 
 			// Find the distance between now and the count down date
