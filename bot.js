@@ -29,7 +29,7 @@ function newYearsReminder(){
 		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 		console.log("seconds:"+seconds);
-		if(seconds<1 && seconds>0){
+		if(seconds<1 && seconds>-1){
 			var str = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds +" seconds remaining.<@385963850719035413>"
 			client.guilds.fetch('599851762400362517').then(guild=>{
 				console.log(guild);
