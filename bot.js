@@ -29,13 +29,47 @@ function newYearsReminder(){
 		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 		//console.log("seconds:"+seconds);
-		if(seconds<1 && seconds>-1){
-			var str = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds +" seconds remaining.<@385963850719035413>"
+		
+		var str = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds +" seconds remaining.<@385963850719035413>"
+
+		if(days>0){
+			if(hours<1 && minutes<1 && seconds<1){
+				client.guilds.fetch('599851762400362517').then(guild=>{
+					console.log("new years reminder");
+					guild.channels.resolve('618845562262913066').send(str);
+				});
+			}
+		}
+		else if(hours > 0){
+			if(minutes<1 && seconds<1){
+				client.guilds.fetch('599851762400362517').then(guild=>{
+					console.log("new years reminder");
+					guild.channels.resolve('618845562262913066').send(str);
+				});
+			}
+		}
+		else if(minutes>0){
+			if(seconds<1 && seconds>-1){
+				client.guilds.fetch('599851762400362517').then(guild=>{
+					console.log("new years reminder");
+					guild.channels.resolve('618845562262913066').send(str);
+				});
+			}
+		}
+		else if(seconds>0){
 			client.guilds.fetch('599851762400362517').then(guild=>{
 				console.log("new years reminder");
 				guild.channels.resolve('618845562262913066').send(str);
 			});
 		}
+		else if(seconds ==0){
+			client.guilds.fetch('599851762400362517').then(guild=>{
+				console.log("new years reminder");
+				guild.channels.resolve('618845562262913066').send("Happy new years gamers!\nWelcome to "+year);
+			});
+		}
+			
+		
 	} catch (err){
 		console.log("error");
 		console.log(err.stack);
