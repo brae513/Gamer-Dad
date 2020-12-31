@@ -16,6 +16,9 @@ for (const file of commandFiles) {
 function newYearsReminder(){
 	try{
 		var year = 1901+ new Date().getYear();
+		if(new Date().getMonth()==0 && new Date().getDate()==1){
+			year--;
+		}
 		var nextNewYears = "Jan 1, "+year+" 08:00:00";
 		var countDownDate = new Date(nextNewYears).getTime();
 		var now = new Date().getTime();
