@@ -31,7 +31,7 @@ function newYearsReminder(){
 			var str = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds +" seconds remaining.<@385963850719035413>"
 			client.guilds.fetch('599851762400362517').then(guild=>{
 				console.log(guild);
-				guild.channels.resolve('618845562262913066').send(str));
+				guild.channels.resolve('618845562262913066').send(str);
 			});
 		}
 	} catch (err){
