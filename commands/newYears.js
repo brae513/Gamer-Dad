@@ -7,7 +7,7 @@ module.exports = {
 	execute(message, args) {
 		try{
 			console.log("New years");
-			var year = 1900+ new Date().getYear();
+			var year = 1901+ new Date().getYear();
 			var nextNewYears = "Jan 1, "+year+" 08:00:00";
 			var countDownDate = new Date(nextNewYears).getTime();
 			var now = new Date().getTime();
