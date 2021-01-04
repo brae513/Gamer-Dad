@@ -84,6 +84,21 @@ client.setInterval(newYearsReminder,1000)
 client.on('ready', () => {
 
     console.log('I am ready!');
+	const { Pool } = require ('pg');  
+	const pool = new Pool({
+        connectionString: process.env.DATABASE_URL.parse,
+        port: 5432,
+        //host: process.env.dbhost,
+        //database: process.env.db,
+        //user: process.env.user,
+       //password: process.env.password,
+        //ssl: true,
+    });
+
+	pool.connect(err => {
+	  if(err) throw err; 
+	  console.log('Connected to PostgresSQL');
+	})
 
 });
 
