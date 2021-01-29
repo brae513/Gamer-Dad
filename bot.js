@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const db = require('quick.db');
+//const db = require('quick.db');
 
 
 const prefix = "!"
