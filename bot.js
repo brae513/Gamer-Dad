@@ -2,6 +2,9 @@ const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const fs = require('fs');
 
+const db = require('quick.db');
+
+
 const prefix = "!"
 
 const client = new Discord.Client();
@@ -84,7 +87,7 @@ client.setInterval(newYearsReminder,1000)
 client.on('ready', () => {
 
     console.log('I am ready!');
-	const { Pool } = require ('pg');  
+	/*const { Pool } = require ('pg');  
 	const pool = new Pool({
         connectionString: process.env.DATABASE_URL.parse,
         port: 5432,
@@ -98,7 +101,7 @@ client.on('ready', () => {
 	pool.connect(err => {
 	  if(err) throw err; 
 	  console.log('Connected to PostgresSQL');
-	})
+	})*/
 
 });
 
