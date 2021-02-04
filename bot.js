@@ -131,7 +131,7 @@ client.on('messageReactionAdd', reaction => {
 	}
 });
 
-client.on('messageUpdate', oldMessage, newMessage =>{
+client.on('messageUpdate', (oldMessage, newMessage) =>{
 	try{
 		if(message.guild != null && message.guild.id === '599851762400362517'){
 			// 618845562262913066 bot channel
