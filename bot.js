@@ -139,6 +139,7 @@ client.on('messageUpdate', (oldMessage, message) =>{
 			var content = message.content.toLowerCase();
 
 			if(message.author.id === '147136628215775233' || message.author.id === '161975669834776576'){
+				console.log(content);
 				if(content.indexOf("sex")>=0 || content.indexOf("s3x")>=0){
 					message.reply("You think you could trick me?");
 					message.delete();
