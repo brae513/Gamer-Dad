@@ -137,8 +137,9 @@ client.on('messageUpdate', (oldMessage, message) =>{
 			// 618845562262913066 bot channel
 
 			var content = message.content.toLowerCase();
+
 			if(message.author.id === '147136628215775233' || message.author.id === '161975669834776576'){
-				if(msg.indexOf("sex")>=0 || msg.indexOf("s3x")>=0){
+				if(content.indexOf("sex")>=0 || content.indexOf("s3x")>=0){
 					message.reply("You think you could trick me?");
 					message.delete();
 				}
