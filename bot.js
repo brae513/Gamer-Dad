@@ -87,21 +87,6 @@ client.setInterval(newYearsReminder,1000)
 client.on('ready', () => {
 
     console.log('I am ready!');
-	/*const { Pool } = require ('pg');  
-	const pool = new Pool({
-        connectionString: process.env.DATABASE_URL.parse,
-        port: 5432,
-        //host: process.env.dbhost,
-        //database: process.env.db,
-        //user: process.env.user,
-       //password: process.env.password,
-        //ssl: true,
-    });
-
-	pool.connect(err => {
-	  if(err) throw err; 
-	  console.log('Connected to PostgresSQL');
-	})*/
 
 });
 
@@ -133,14 +118,13 @@ client.on('messageReactionAdd', reaction => {
 
 client.on('messageUpdate', (oldMessage, message) =>{
 	try{
-		var content = message.content.toLowerCase();
-			console.log(content);
 		if(message.guild != null && message.guild.id === '599851762400362517'){
 			// 618845562262913066 bot channel
 
-			
+			var content = message.content.toLowerCase();
+			console.log(content);
 
-			if(message.author.id === '147136628215775233' || message.author.id === '161975669834776576'){
+			if(message.author.id === '147136628215775233'){
 				if(content.indexOf("sex")>=0 || content.indexOf("s3x")>=0){
 					message.reply("You think you could trick me?");
 					message.delete();
