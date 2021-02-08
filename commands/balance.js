@@ -7,7 +7,7 @@ module.exports = {
 	execute(message, args) {
 		try{
 			var cnt = profile.getDiegoBucks(message.author.id);
-			message.channel.send(profile.getDiegoBucks(cnt));
+			message.channel.send("You have "+cnt+" Diego bucks");
 			
 		}catch(err){
 			console.log(err.stack);
