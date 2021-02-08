@@ -100,14 +100,14 @@ client.on('messageReactionAdd', reaction => {
 						return;
 					}
 					else{
-						message.react(message.guild.emojis.cache.get('709979168598786049')).then(console.log());
+						message.react(message.guild.emojis.cache.get('709979168598786049')).then();
 					}
 				}
 				else if(reaction.me){
 					return;
 				}
 				message.reply("Wow, that's stupid");
-				message.react(message.guild.emojis.cache.get('699139118826913794')).then(console.log());
+				message.react(message.guild.emojis.cache.get('699139118826913794')).then();
 			}
 		}
 	} catch (err){
