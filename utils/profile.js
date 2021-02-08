@@ -48,4 +48,10 @@ function remDiegoBucks(id,amt){
 	saveProfile(id,prof);
 }
 
+function getDiegoBucks(id){
+	var rawData = getProfile(id);
+	var prof = JSON.parse(rawData);
+	return prof.diegoBucks;
+}
+
 //addDiegoBucks('test',5);

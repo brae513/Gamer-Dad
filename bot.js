@@ -122,7 +122,6 @@ client.on('messageUpdate', (oldMessage, message) =>{
 			// 618845562262913066 bot channel
 
 			var content = message.content.toLowerCase();
-			console.log(content);
 
 			if(message.author.id === '147136628215775233'){
 				if(content.indexOf("sex")>=0 || content.indexOf("s3x")>=0){

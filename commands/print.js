@@ -8,10 +8,10 @@ module.exports = {
 		try{
 			
 			if(message.author.id == '161975669834776576' || message.author.id =='378445325351780366'){
-				if(args.length!=2){
+				if(args.length!=1){
 					message.channel.send("Incorrect syntax\nCorrect syntax: !print (amt)");
 				}
-				profile.addDiegoBucks(message.author.id,args[1]);
+				profile.addDiegoBucks(message.author.id,args[0]);
 			}
 			else{
 				message.channel.send("You can't print the epic currency");
