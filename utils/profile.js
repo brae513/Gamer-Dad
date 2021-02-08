@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const defaultRaw = {
 	name: 'nobody',
-	diegoBucks: 5
+	diegoBucks: 0
 };
 const defaultData = JSON.stringify(defaultRaw);
 
@@ -54,4 +54,12 @@ function getDiegoBucks(id){
 	return prof.diegoBucks;
 }
 
-//addDiegoBucks('test',5);
+module.exports = {
+	getProfile,
+	saveProfile,
+	addDiegoBucks,
+	remDiegoBucks,
+	getDiegoBucks
+};
+//var cnt = getDiegoBucks("tester");
+//console.log(cnt);
