@@ -6,8 +6,8 @@ module.exports = {
 	description: 'Shows a user\'s diego bucks balance',
 	execute(message, args) {
 		try{
-			
-			message.channel.send(profile.getDiegoBucks(message.author.id));
+			var cnt = profile.getDiegoBucks(message.author.id);
+			message.channel.send(profile.getDiegoBucks(cnt));
 			
 		}catch(err){
 			console.log(err.stack);
