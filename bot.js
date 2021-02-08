@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const fs = require('fs');
+const profile = require('./utils/profile.js');
+
 
 //const db = require('quick.db');
 
