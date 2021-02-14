@@ -16,6 +16,14 @@ module.exports = {
 						str=str.substring(start);
 						var end = str.indexOf("</p>");
 						str = str.substring(0,end);
+						while(str.includes("</br>")){
+							var spot = str.indexOf("</br>");
+							str=str=str.substring(0,spot)+str.substring(spot+5);
+						}
+						while(str.includes("<br>")){
+							var spot = str.indexOf("<br>");
+							str=str=str.substring(0,spot)+str.substring(spot+4);
+						}
 						message.channel.send(str);
 					}
 					else{
