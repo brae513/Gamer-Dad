@@ -7,7 +7,7 @@ module.exports = {
 		try{
 			var commandNames = ['joke','korone','insult','epic','rtx','deafen','losehomies','newyears','status'];
 			var selected = Math.floor(Math.random()*commandNames.length);
-			const command = require('./commands/'+commandNames[selected]+'.js');
+			const command = require('./'+commandNames[selected]+'.js');
 			command.execute(message,args);
 			
 		}catch(err){
