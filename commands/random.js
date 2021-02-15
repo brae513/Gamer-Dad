@@ -5,8 +5,10 @@ const commands = [];
 
 for (const file of commandFiles) {
 	const command = require(`./${file}`);
-	commands.push(command);
-	console.log(command.name);
+	if(command.random==true){
+		commands.push(command);
+		console.log(command.name);
+	}
 }
 /*const commandNames = ['joke','korone','insult','epic','rtx','deafen','loshomies','newyears','cat'];
 for (const name of commandNames) {
