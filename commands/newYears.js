@@ -3,6 +3,8 @@
 module.exports = {
 	name: 'newyears',
 	description: 'new years countdown',
+	random:true,
+	client:false,
 	execute(message, args) {
 		try{
 			console.log("New years");
@@ -22,6 +24,7 @@ module.exports = {
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 			
 			var str = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds +" seconds remaining."
+			console.log(str);
 			message.channel.send(str);
 		}catch(err){
 			console.log(err.stack);

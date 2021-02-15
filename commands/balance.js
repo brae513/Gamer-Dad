@@ -4,6 +4,8 @@ const profile = require('../utils/profile.js');
 module.exports = {
 	name: 'balance',
 	description: 'Shows a user\'s diego bucks balance',
+	random:false,
+	client:false,
 	execute(message, args) {
 		try{
 			var cnt = profile.getDiegoBucks(message.author.id);

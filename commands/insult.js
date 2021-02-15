@@ -4,6 +4,8 @@ const fetch = require('node-fetch');
 module.exports = {
 	name: 'insult',
 	description: 'tells a victorian insult.',
+	random:true,
+	client:false,
 	execute(message, args) {
 		try{
 			fetch("http://quandyfactory.com/insult/json")

@@ -4,6 +4,8 @@ const fetch = require('node-fetch');
 module.exports = {
 	name: 'korone',
 	description: 'korone',
+	random:true,
+	client:false,
 	execute(message, args) {
 		try{
 			var gifs = [ "https://tenor.com/view/korone-pet-pet-gif-18248733",

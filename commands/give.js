@@ -4,6 +4,8 @@ const fs = require('fs');
 module.exports = {
 	name: 'give',
 	description: 'give\'s diego bucks to the target',
+	random:false,
+	client:false,
 	execute(message, args) {
 		try{
 			if(args.length<3){

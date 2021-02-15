@@ -4,6 +4,8 @@ const rtx = false;
 module.exports = {
 	name: 'rtx',
 	description: 'turns rtx on',
+	random:true,
+	client:false,
 	execute(message, args) {
 		try{
 			if(Math.random()>0.5){

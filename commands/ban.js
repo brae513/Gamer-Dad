@@ -1,6 +1,8 @@
 module.exports = {
 	name: 'ban',
 	description: 'bans someone',
+	random:true,
+	client:false,
 	execute(message, args) {
 		try{
 		//Diego might be epic

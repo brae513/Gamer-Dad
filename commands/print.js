@@ -4,6 +4,8 @@ const profile = require('../utils/profile.js');
 module.exports = {
 	name: 'print',
 	description: 'give\'s diego bucks to the user',
+	random:false,
+	client:false,
 	execute(message, args) {
 		try{
 			

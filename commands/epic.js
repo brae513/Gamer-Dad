@@ -3,6 +3,8 @@
 module.exports = {
 	name: 'epic',
 	description: 'that\'s epic',
+	random:true,
+	client:false,
 	execute(message, args) {
 		try{
 			if(message.guild != null && message.guild.id === '599851762400362517'){

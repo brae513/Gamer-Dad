@@ -209,7 +209,7 @@ client.on('message', message => {
 		if (!client.commands.has(command)) return;
 
 		try {
-			if(command==="status"){
+			if(command.client==true){
 				client.commands.get(command).execute(client,message, args);
 			}
 			else{

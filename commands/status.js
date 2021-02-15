@@ -4,6 +4,8 @@ const fetch = require('node-fetch');
 module.exports = {
 	name: 'status',
 	description: 'randomizes the bot\'s status',
+	random:true,
+	client:true,
 	execute(client, message, args) {
 		try{
 			var people = [ "Diego","Kaleb","Smeag","Race","Marc","Brae","Erick","Joeboi"];

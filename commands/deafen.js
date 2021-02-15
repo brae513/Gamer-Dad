@@ -4,6 +4,8 @@ const fetch = require('node-fetch');
 module.exports = {
 	name: 'deafen',
 	description: 'deafens/undeafens yourself or people you mention',
+	random:true,
+	client:false,
 	execute(message, args) {
 		try{
 			if(message.guild!=null){
