@@ -20,8 +20,8 @@ module.exports = {
 	name: 'random',
 	description: 'picks a random command',
 	random:false,
-	client:false,
-	execute(message, args) {
+	client:true,
+	execute(client, message, args) {
 		try{
 			var selected = Math.floor(Math.random()*commands.length);
 			commands[selected].execute(message,args);
