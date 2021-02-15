@@ -9,7 +9,7 @@ module.exports = {
 			fetch("http://quandyfactory.com/insult/json")
 				.then(res => res.json())
 				.then(json =>{
-					console.log(json);
+					//console.log(json);
 					if(!message.mentions.members.size){
 						message.reply(json.insult);
 					}
