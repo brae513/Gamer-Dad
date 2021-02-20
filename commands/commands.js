@@ -1,4 +1,4 @@
-const commandUtil = require("./utils/commandUtil.js");
+const commandUtil = require("../utils/commandUtil.js");
 
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
 			}
 			message.channel.send(msg);
 		}catch(err){
-			console.log("Error in joke");
+			console.log("Error in commands");
 			console.log(err.stack);
 		}
 	},
