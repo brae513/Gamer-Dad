@@ -209,6 +209,7 @@ client.on('message', message => {
 		if (!client.commands.has(command)) return;
 
 		try {
+			console.log(command.name+":"command.client);
 			if(command.client==true){
 				client.commands.get(command).execute(client,message, args);
 			}
