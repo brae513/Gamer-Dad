@@ -1,15 +1,4 @@
-const fs = require('fs');
-
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-const commands = [];
-
-for (const file of commandFiles) {
-	const command = require(`./${file}`);
-	if(command.random==true){
-		commands.push(command);
-		console.log(command.name);
-	}
-}
+const commandUtil = require("../utils/commandUtil");
 /*const commandNames = ['joke','korone','insult','epic','rtx','deafen','loshomies','newyears','cat'];
 for (const name of commandNames) {
 	const command = require('./'+name+'.js');
@@ -23,6 +12,7 @@ module.exports = {
 	client:true,
 	execute(client, message, args) {
 		try{
+			var commands = commandUtil.getCommands();
 			var selected = Math.floor(Math.random()*commands.length);
 			commands[selected].execute(message,args);
 			
