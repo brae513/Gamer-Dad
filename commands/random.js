@@ -12,7 +12,7 @@ module.exports = {
 	client:true,
 	execute(client, message, args) {
 		try{
-			var commands = commandUtil.getCommands();
+			var commands = commandUtil.getRand();
 			var selected = Math.floor(Math.random()*commands.length);
 			commands[selected].execute(message,args);
 			

@@ -8,7 +8,7 @@ module.exports = {
 	client:false,
 	execute(message, args) {
 		try{
-			var commands = commandUtil.getRand();
+			var commands = commandUtil.getCommands();
 			var msg = "Commands:";
 			for(i=0;i<commands.length;i++){
 				msg+="\n"+commands[i].name+":"+commands[i].description;
