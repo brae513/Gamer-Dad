@@ -1,4 +1,4 @@
-const commandUtil = require("../utils/commandUtil");
+const commandUtil = require("../utils/commandUtil.js");
 
 
 module.exports = {

@@ -17,6 +17,7 @@ for (const file of commandFiles) {
 function getCommands(){
 	return commands;
 }
+
 function getRand(){
 	return randCommands;
 }
