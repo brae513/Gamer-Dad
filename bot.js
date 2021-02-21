@@ -214,7 +214,7 @@ client.on('message', message => {
 		try {
 			console.log(command.name+":"+command.client);
 			if(command.client==true){
-				ccommand.execute(client,message, args);
+				command.execute(client,message, args);
 			}
 			else{
 				command.execute(message, args);

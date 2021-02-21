@@ -11,7 +11,7 @@ module.exports = {
 			var commands = commandUtil.getCommands();
 			var msg = "Commands:";
 			for(i=0;i<commands.length;i++){
-				msg+="\n"+commands[i].name+":"+commands[i].description;
+				msg+="\n"+commands[i].name+" :\t"+commands[i].description;
 			}
 			message.channel.send(msg);
 		}catch(err){
