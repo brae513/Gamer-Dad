@@ -5,12 +5,14 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 const commands = [];
 const randCommands = [];
 
-for (const file of commandFiles) {
-	const command = require(commandDir+`/${file}`);
-	//console.log(command.name);
-	commands.push(command);
-	if(command.random==true){
-		randCommands.push(command);
+function init(){
+	for (const file of commandFiles) {
+		const command = require(commandDir+`/${file}`);
+		//console.log(command.name);
+		commands.push(command);
+		if(command.random==true){
+			randCommands.push(command);
+		}
 	}
 }
 
@@ -24,7 +26,8 @@ function getRand(){
 
 module.exports = {
 	getCommands,
-	getRand
+	getRand,
+	init
 	//getDescriptions
 };
 //var cnt = getDiegoBucks("tester");

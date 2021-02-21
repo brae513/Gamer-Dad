@@ -3,7 +3,7 @@ const profile = require('../utils/profile.js');
 
 module.exports = {
 	name: 'balance',
-	description: 'Shows a user\'s diego bucks balance',
+	description: 'Shows a user\'s diego bucks balance (doesnt work obv)',
 	random:false,
 	client:false,
 	execute(message, args) {
