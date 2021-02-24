@@ -1,8 +1,8 @@
 
 
 module.exports = {
-	name: 'epic',
-	description: 'that\'s epic',
+	name: 'marcsmom',
+	description: 'marc\'s mom?',
 	random:true,
 	client:false,
 	execute(message, args) {
