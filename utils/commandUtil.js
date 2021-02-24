@@ -6,6 +6,8 @@ const commands = [];
 const randCommands = [];
 
 function init(){
+	commands = [];
+	randCommands = [];
 	for (const file of commandFiles) {
 		const command = require(commandDir+`/${file}`);
 		//console.log(command.name);
