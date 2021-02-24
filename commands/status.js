@@ -8,7 +8,7 @@ module.exports = {
 	client:true,
 	execute(client, message, args) {
 		try{
-			var people = [ "Diego","Kaleb","Smeag","Race","Marc","Brae","Erick","Joeboi"];
+			var people = [ "Diego","Kaleb","Smeag","Race","Marc","Brae","Erick","Joeboi","Dom","Brady","Connor"];
 			var games = [ "tic tac toe","minesweeper","rock paper scissors"];
 			var person = people[Math.floor(Math.random()*people.length)];
 			var game = games[Math.floor(Math.random()*games.length)];
@@ -20,7 +20,7 @@ module.exports = {
 					type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
 				}
 			}).then(pres=>console.log(pres));
-			message.channel.send("Yo I'm playing "+msg);
+			message.channel.send("Yo, I'm playing "+msg);
 		}catch(err){
 			console.log(err.stack);
 		}

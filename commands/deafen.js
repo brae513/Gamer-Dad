@@ -32,7 +32,7 @@ module.exports = {
 							});
 						}
 						else{
-							message.channel.send("no");
+							message.channel.send("https://media.discordapp.net/attachments/130202706936725504/740816170822664232/1589148221901-1.gif");
 						}
 					});
 				}

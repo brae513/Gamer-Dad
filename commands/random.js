@@ -1,9 +1,4 @@
 const commandUtil = require("../utils/commandUtil");
-/*const commandNames = ['joke','korone','insult','epic','rtx','deafen','loshomies','newyears','cat'];
-for (const name of commandNames) {
-	const command = require('./'+name+'.js');
-	commands.push(command);
-}*/
 
 module.exports = {
 	name: 'random',
@@ -22,4 +17,3 @@ module.exports = {
 	},
 };
 
-//commands[7].execute();
