@@ -23,7 +23,7 @@ module.exports = {
 						vids.push(str);
 					}
 					var selected = Math.floor(Math.random()*vids.length);
-					message.channel.send(vids[Math.floor(Math.random()*vids.length)]);
+					message.channel.send("I'm proud of my son for this one\n"+vids[Math.floor(Math.random()*vids.length)]);
 
 				});
 		}catch(err){

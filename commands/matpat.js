@@ -7,7 +7,7 @@ module.exports = {
 	client:false,
 	execute(message, args) {
 		try{
-			message.channel.send("https://cdn.discordapp.com/attachments/671036045135183882/813647645264183296/DYIqL8JVwAAzCz6.png");
+			message.channel.send("https://cdn.discordapp.com/attachments/671036045135183882/814045111062233128/makesweet_1.gif");
 		}catch(err){
 			console.log(err.stack);
 		}

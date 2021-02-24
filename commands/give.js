@@ -8,7 +8,7 @@ module.exports = {
 	client:false,
 	execute(message, args) {
 		try{
-			if(args.length<3){
+			if(args.length!=2){
 				message.channel.send("Incorrect syntax:\nCorrect syntax: !give person amount");
 			}
 			else{
