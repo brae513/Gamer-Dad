@@ -1,7 +1,7 @@
 const badAppleUtil = require('../utils/badapple');
 
 module.exports = {
-	name: 'badApple',
+	name: 'badapple',
 	description: 'Touhou',
 	random:true,
 	client:false,
