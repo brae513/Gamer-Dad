@@ -1,5 +1,5 @@
-
 const delay = 1000;
+
 module.exports = {
 	name: 'cat',
 	description: 'cat',
