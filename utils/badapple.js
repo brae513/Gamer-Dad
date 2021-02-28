@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const lastFrame = 7549;
 const delay = 500;
-const path = '../utils/badApple/';
+const path = './utils/badApple/';
 
 var msg;
 var curSpot = 0;
