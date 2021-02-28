@@ -18,9 +18,10 @@ function nextFrame(){
 	if(curSpot<lastFrame){
 		var nextPath = path+'frame'+curSpot+'.txt';
 		var nextString = fs.readFileSync(nextPath).toString('utf8');
-		msg.edit('\`\`\`'+nextString+'\`\`\`');
-		curSpot++;
-		setTimeout(() => { nextFrame()},delay);
+		msg.edit('\`\`\`'+nextString+'\`\`\`').then(message=>{
+			curSpot++;
+			setTimeout(() => { nextFrame()},delay);
+		});
 	}
 }
 
