@@ -7,7 +7,7 @@ module.exports = {
 	client:false,
 	execute(message, args) {
 		try{
-			message.send('\`\`\`.\`\`\`').then(msg => {
+			message.channel.send('\`\`\`.\`\`\`').then(msg => {
 				badAppleUtil.start(message);
 			});
 
