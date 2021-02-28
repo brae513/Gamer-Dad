@@ -7,7 +7,10 @@ module.exports = {
 	client:false,
 	execute(message, args) {
 		try{
-			badAppleUtil.start(message);
+			message.send('\`\`\`.\`\`\`').then(msg => {
+				badAppleUtil.start(message);
+			});
+
 		} catch (err){
 			console.log("Error in badApple");
 			console.log(err.stack);
