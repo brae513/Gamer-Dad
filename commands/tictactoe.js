@@ -17,15 +17,15 @@ module.exports = {
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
 				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(O)\'s turn!').then(msg=>{
-					msg.react("1").then(;
-					msg.react("2").then(;
-					msg.react("3").then(;
-					msg.react("4").then(;
-					msg.react("5").then(;
-					msg.react("6").then(;
-					msg.react("7").then(;
-					msg.react("8").then(;
-					msg.react("9")))))))));
+					msg.react(":one:").then(
+					msg.react(":two:").then(
+					msg.react(":three:").then(
+					msg.react(":four:").then(
+					msg.react(":five:").then(
+					msg.react(":six:").then(
+					msg.react(":seven:").then(
+					msg.react(":eight:").then(
+					msg.react(":nine:")))))))));
 				});
 			}
 
