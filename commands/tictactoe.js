@@ -21,12 +21,18 @@ module.exports = {
 		}
 	},
 	react(message,reaction){
-		var header = message.substring(0,message.indexOf('!'));
-		var board = message.substring(message.indexOf('!')+1,message.indexOf("It\'s"));
-		var lastLine = message.substring(message.indexOf("It\'s"));
-		console.log(header);
-		console.log(board);
-		console.log(lastLine);
+		var content = message.content;
+		try{
+			var header = content.substring(0,content.indexOf('!'));
+			var board = content.substring(content.indexOf('!')+1,content.indexOf("It\'s"));
+			var lastLine = content.substring(content.indexOf("It\'s"));
+			console.log(header);
+			console.log(board);
+			console.log(lastLine);
+		} catch (err){
+			console.log("Error in tic-tac-toe");
+			console.log(err.stack);
+		}
 	},
 	getBoard,
 	getVals,
