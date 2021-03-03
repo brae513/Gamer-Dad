@@ -16,7 +16,17 @@ module.exports = {
 			else{
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
-				message.channel.send('tictactoe between <@'+message.author.id +'> (O) and <@'+other.id+'> (X)!\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(O)\'s turn!');
+				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(O)\'s turn!').then(msg=>{
+					msg.react("\:one:");
+					msg.react("\:two:");
+					msg.react("\:three:");
+					msg.react("\:four:");
+					msg.react("\:five:");
+					msg.react("\:six:");
+					msg.react("\:seven:");
+					msg.react("\:eight:");
+					msg.react("\:nine:");
+				});
 			}
 
 		} catch (err){
@@ -35,11 +45,14 @@ module.exports = {
 			var playerOne = header.substring(header.indexOf('<@')+2,header.indexOf('>'));
 			var playerTwo = header.substring(header.lastIndexOf('<@')+2,header.lastIndexOf('>'));
 			var otherPlayerId = "";
+			var curSymbol = "?"
 			if(curPlayerId==playerOne){
 				otherPlayerId=playerTwo;
+				curSymbol="O";
 			}
 			else{
 				otherPlayerId=playerOne;
+				curSymbol="X";
 			}
 			//console.log(header);
 			console.log(board);
@@ -48,17 +61,51 @@ module.exports = {
 			console.log(playerTwo);
 			
 			if(curPlayerId == user.id){
-				
+				var spot=-1;
+				for(var i=1;i<10;i++){
+					if(reaction.emoji.name.includes(""+i)){
+						spot=i-1;
+						break;
+					}
+				}
+				if(spot!=-1){
+					if(isEmpty(board,spot)){
+						board=place(board,spot,curSymbol);
+						boardState = checkBoard(board);
+						if(boardState=='X'){
+							message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerTwo+"> wins!");
+						}
+						else if(boardState=='O'){
+							message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerOne+"> wins!");
+						}
+						else if(boardState=='draw'){
+							message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\nDraw!");
+						}
+						else{
+							var nextSym = '?'
+							if(curSymbol=='O'){
+								nextSym='X';
+							}
+							else{
+								nextSym='O';
+							}
+							message.edit(hetHeader(playerOne,playerTwo)+"\n"+board+"\`\`\`\nIt\'s <@"+other.id+">("+nextSym+")\'s turn!";
+						}
+					}
+					else{
+						// TODO: reply with taken spot here
+					}
+				}
 			}
 		} catch (err){
 			console.log("Error in tic-tac-toe");
 			console.log(err.stack);
 		}
 	},
-	getBoard,
+	/*getBoard,
 	getVals,
 	isEmpty,
-	place,
+	place,*/
 };
 
 
@@ -70,6 +117,10 @@ function getBoard(vals){
 	var botMid = '  '+vals[6]+'  |  '+vals[7]+'  |  '+vals[8]+'  ';
 	var board = topLine+'\n'+topMid+'\n'+botLine+'\n'+topLine+'\n'+midMid+'\n'+botLine+'\n'+topLine+'\n'+botMid+'\n'+topLine;
 	return board;
+}
+
+function getHeader(p1,p2){
+	return 'tictactoe between <@'+p1 +'> (O) and <@'+p2+'> (X)!';
 }
 
 function getVals(board){
