@@ -18,7 +18,8 @@ module.exports = {
 				//var tic = require('./tictactoe');
 				const one = client.emojis.cache.get("816812179432538154");
 				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!').then(msg=>{
-					msg.react(one).then(
+					console.log(one);
+					msg.react("1").then(
 					msg.react("2").then(
 					msg.react("3").then(
 					msg.react("4").then(
