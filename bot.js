@@ -116,9 +116,10 @@ client.on('messageReactionAdd', (reaction,user) => {
 	try{
 		var message = reaction.message;
 		if(message.editable && message.content.substring(0,9)=='tictactoe'){
-			console.log("id"+reaction.emoji.id);
-			console.log("identification"+reaction.emoji.identifier);
-			console.log("name"+reaction.emoji.name);
+			console.log("id:"+reaction.emoji.id);
+			console.log("identier:"+reaction.emoji.identifier);
+			console.log("name:"+reaction.emoji.name);
+			console.log("toString:"+reaction.emoji.toString());
 			client.commands.get('tictactoe').react(message,reaction,user);
 		}
 		if(message.guild != null && message.guild.id === '599851762400362517'){
