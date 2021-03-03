@@ -19,15 +19,16 @@ module.exports = {
 				//const one = client.emojis.cache.get("816812179432538154");
 				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!').then(msg=>{
 					//console.log(one);
-					msg.react("1").then(
-					msg.react("2").then(
-					msg.react("3").then(
-					msg.react("4").then(
-					msg.react("5").then(
-					msg.react("6").then(
-					msg.react("7").then(
-					msg.react("8").then(
-					msg.react("9")))))))));
+					
+					msg.react("1⃣").then(
+					msg.react("2⃣").then(
+					msg.react("3⃣").then(
+					msg.react("4⃣").then(
+					msg.react("5⃣").then(
+					msg.react("6⃣").then(
+					msg.react("7⃣").then(
+					msg.react("8⃣").then(
+					msg.react("9⃣").then))))))));
 				});
 			}
 
