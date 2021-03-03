@@ -7,10 +7,12 @@ const path = './utils/badApple/';
 
 var msg;
 var curSpot = 0;
+var spd = 1;
 
-function start(message){
+function start(message,speed){
 	msg=message;
-	curSpot = 50;
+	curSpot = 0;
+	spd=speed;
 	nextFrame();
 }
 
@@ -19,7 +21,7 @@ function nextFrame(){
 		var nextPath = path+'frame'+curSpot+'.txt';
 		var nextString = fs.readFileSync(nextPath).toString('utf8');
 		msg.edit('\`\`\`'+nextString+'\`\`\`').then(message=>{
-			curSpot++;
+			curSpot+=spd;
 			setTimeout(() => { nextFrame()},delay);
 		});
 	}
