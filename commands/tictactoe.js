@@ -26,9 +26,12 @@ module.exports = {
 			var header = content.substring(0,content.indexOf('!'));
 			var board = content.substring(content.indexOf('!')+1,content.indexOf("It\'s"));
 			var lastLine = content.substring(content.indexOf("It\'s"));
+			
+			var curPlayerId = lastLine.substring(lastLine.indexOf('<@')+2,lastLine.indexOf('>'));
 			console.log(header);
 			console.log(board);
 			console.log(lastLine);
+			console.log(curPlayerId);
 		} catch (err){
 			console.log("Error in tic-tac-toe");
 			console.log(err.stack);
