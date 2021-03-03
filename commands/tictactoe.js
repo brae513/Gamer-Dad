@@ -89,7 +89,7 @@ module.exports = {
 							else{
 								nextSym='O';
 							}
-							message.edit(hetHeader(playerOne,playerTwo)+"\n"+board+"\`\`\`\nIt\'s <@"+other.id+">("+nextSym+")\'s turn!";
+							message.edit(getHeader(playerOne,playerTwo)+"\n"+board+"\`\`\`\nIt\'s <@"+other.id+">("+nextSym+")\'s turn!");
 						}
 					}
 					else{
