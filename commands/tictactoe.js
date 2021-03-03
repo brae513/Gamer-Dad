@@ -1,4 +1,8 @@
 
+
+const spots = [20,26,32,74,80,86,128,134,140];
+const reactions = ['816484885358837761'];
+
 module.exports = {
 	name: 'tictactoe',
 	description: 'It\'s just tic-tac-toe',
@@ -24,14 +28,24 @@ module.exports = {
 		var content = message.content;
 		try{
 			var header = content.substring(0,content.indexOf('!'));
-			var board = content.substring(content.indexOf('!')+1,content.indexOf("It\'s"));
+			var board = content.substring(content.indexOf('!')+4,content.indexOf("It\'s")-4);
 			var lastLine = content.substring(content.indexOf("It\'s"));
 			
 			var curPlayerId = lastLine.substring(lastLine.indexOf('<@')+2,lastLine.indexOf('>'));
-			console.log(header);
+			var playerOne = header.substring(header.indexOf('<@')+2,header.indexOf('>'));
+			var playerTwo = header.substring(header.lastIndexOf('<@')+2,header.lastIndexOf('>'));
+			var otherPlayerId = "";
+			if(curPlayerId==playerOne){
+				otherPlayerId=playerTwo;
+			}
+			else{
+				otherPlayerId=playerOne;
+			}
+			//console.log(header);
 			console.log(board);
 			console.log(lastLine);
-			console.log(curPlayerId);
+			console.log(playerOne);
+			console.log(playerTwo);
 		} catch (err){
 			console.log("Error in tic-tac-toe");
 			console.log(err.stack);
@@ -43,7 +57,6 @@ module.exports = {
 	place,
 };
 
-const spots = [20,26,32,74,80,86,128,134,140];
 
 function getBoard(vals){
 	var topLine = '     |     |     ';
