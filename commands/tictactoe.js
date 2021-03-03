@@ -24,11 +24,11 @@ module.exports = {
 			console.log(err.stack);
 		}
 	},
-	react(message,reaction){
-		var content = message.content;
+	react(message,reaction,user){
 		try{
+			var content = message.content;
 			var header = content.substring(0,content.indexOf('!'));
-			var board = content.substring(content.indexOf('!')+4,content.indexOf("It\'s")-4);
+			var board = content.substring(content.indexOf('!')+5,content.indexOf("It\'s")-4);
 			var lastLine = content.substring(content.indexOf("It\'s"));
 			
 			var curPlayerId = lastLine.substring(lastLine.indexOf('<@')+2,lastLine.indexOf('>'));
@@ -46,6 +46,10 @@ module.exports = {
 			console.log(lastLine);
 			console.log(playerOne);
 			console.log(playerTwo);
+			
+			if(curPlayerId == user.id){
+				
+			}
 		} catch (err){
 			console.log("Error in tic-tac-toe");
 			console.log(err.stack);

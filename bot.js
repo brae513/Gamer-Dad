@@ -89,26 +89,37 @@ client.setInterval(newYearsReminder,1000)
 
 client.on('ready', () => {
 
-    console.log('I am ready!');
-	
-	const { Pool } = require ('pg');  
-	const pool = new Pool({
-        connectionString: process.env.DATABASE_URL.parse,
-        port: 5432,
-        //host: process.env.dbhost,
-        //database: process.env.db,
-        //user: process.env.user,
-       //password: process.env.password,
-        //ssl: true,
-    });
+	try{
+		console.log('I am ready!');
+
+		client.guilds.fetch('161976243233751040').then(guild =>{
+			guild.channels.resolve('190981291192090624').send("New build ready!");
+		});
+		
+		const { Pool } = require ('pg');  
+		const pool = new Pool({
+			connectionString: process.env.DATABASE_URL.parse,
+			port: 5432,
+			//host: process.env.dbhost,
+			//database: process.env.db,
+			//user: process.env.user,
+		   //password: process.env.password,
+			//ssl: true,
+		});
+	} catch(err){
+		console.log("error in startup");
+		console.log(err.stack);
+	}
 });
 
-client.on('messageReactionAdd', reaction => {
+client.on('messageReactionAdd', (reaction,user) => {
 	try{
 		var message = reaction.message;
 		if(message.editable && message.content.substring(0,9)=='tictactoe'){
-			console.log(reaction.emoji.id);
-			client.commands.get('tictactoe').react(message,reaction);
+			console.log("id"+reaction.emoji.id);
+			console.log("identification"+reaction.emoji.identifier);
+			console.log("name"+reaction.emoji.name);
+			client.commands.get('tictactoe').react(message,reaction,user);
 		}
 		if(message.guild != null && message.guild.id === '599851762400362517'){
 			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5){
