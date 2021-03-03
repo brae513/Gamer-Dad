@@ -7,7 +7,7 @@ module.exports = {
 	client:true,
 	execute(client,message, args) {
 		try{
-			if(args!=1){
+			if(args.length!=1){
 				message.channel.send("invalid usage, correct usage is !react (reactionID)");
 			}
 			else{
