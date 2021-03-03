@@ -11,7 +11,7 @@ module.exports = {
 				message.channel.send("invalid usage, correct usage is !react (reactionID)");
 			}
 			else{
-				message.react(args[0]);
+				message.react(args[0]).then();
 			}
 		}catch(err){
 			console.log("Error in react");
