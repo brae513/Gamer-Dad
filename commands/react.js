@@ -11,7 +11,7 @@ module.exports = {
 				message.channel.send("invalid usage, correct usage is !react (reactionID)");
 			}
 			else{
-				message.react(args[0]).then();
+				message.react(client.emojis.get(args[0]));
 			}
 		}catch(err){
 			console.log("Error in react");
