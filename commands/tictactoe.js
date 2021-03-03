@@ -12,7 +12,7 @@ module.exports = {
 			else{
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
-				message.channel.send('tictactoe between <@'+message.author.id +'> and <@'+other.id+'>!\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>\'s turn!\`\`\`');
+				message.channel.send('tictactoe between <@'+message.author.id +'> (O) and <@'+other.id+'> (X)!\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(O)\'s turn!');
 			}
 
 		} catch (err){
@@ -21,7 +21,12 @@ module.exports = {
 		}
 	},
 	react(message,reaction){
-		
+		var header = message.substring(0,message.indexOf('!'));
+		var board = message.substring(message.indexOf('!')+1,message.indexOf("It\'s"));
+		var lastLine = message.substring(message.indexOf("It\'s"));
+		console.log(header);
+		console.log(board);
+		console.log(lastLine);
 	},
 	getBoard,
 	getVals,
