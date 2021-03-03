@@ -120,7 +120,7 @@ client.on('messageReactionAdd', (reaction,user) => {
 			console.log("identier:"+reaction.emoji.identifier);
 			console.log("name:"+reaction.emoji.name);
 			console.log("toString:"+reaction.emoji.toString());
-			console.log("contains?:"+reaction.emoji.toString().contains("1"));
+			console.log("contains?:"+reaction.emoji.toString().includes("1"));
 			client.commands.get('tictactoe').react(message,reaction,user);
 		}
 		if(message.guild != null && message.guild.id === '599851762400362517'){
