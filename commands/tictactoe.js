@@ -12,7 +12,7 @@ module.exports = {
 			else{
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
-				message.channel.send('tictactoe between <@'+message.author.id +'> and <@'+other.id+'>!' + getBoard([1,2,3,4,5,6,7,8,9])+'It\'s <@'+other.id+'>\'s turn!');
+				message.channel.send('```tictactoe between <@'+message.author.id +'> and <@'+other.id+'>!' + getBoard([1,2,3,4,5,6,7,8,9])+'It\'s <@'+other.id+'>\'s turn!```');
 			}
 
 		} catch (err){
