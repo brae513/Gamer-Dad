@@ -16,7 +16,7 @@ module.exports = {
 			else{
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
-				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(O)\'s turn!').then(msg=>{
+				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!').then(msg=>{
 					msg.react(":one:").then(
 					msg.react(":two:").then(
 					msg.react(":three:").then(
