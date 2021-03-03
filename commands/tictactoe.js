@@ -7,8 +7,8 @@ module.exports = {
 	name: 'tictactoe',
 	description: 'It\'s just tic-tac-toe',
 	random:false,
-	client:false,
-	execute(message, args) {
+	client:true,
+	execute(client,message, args) {
 		try{
 			if(message.mentions.members.size!=1){
 				message.channel.send("You need to mention exactly one person for this command.");
@@ -16,8 +16,9 @@ module.exports = {
 			else{
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
+				const one = client.emojis.cache.get("816812179432538154");
 				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!').then(msg=>{
-					msg.react("816812179432538154").then(
+					msg.react(one).then(
 					msg.react("2").then(
 					msg.react("3").then(
 					msg.react("4").then(
