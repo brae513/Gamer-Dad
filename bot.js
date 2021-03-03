@@ -106,7 +106,7 @@ client.on('ready', () => {
 client.on('messageReactionAdd', reaction => {
 	try{
 		var message = reaction.message;
-		if(message.editable && message.substring(0,9)=='tictactoe'){
+		if(message.editable && message.content.substring(0,9)=='tictactoe'){
 			console.log(reaction);
 			commands.get('tictactoe').react();
 		}
