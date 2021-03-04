@@ -172,7 +172,7 @@ function checkBoard(board){
 
 function checkVals(vals){
 	var victor = 'none';
-	console.log(vals);
+	//console.log(vals);
 	for(var i=0;i<3;i++){
 		if(vals[i*3]==vals[i*3+1] && vals[i*3]==vals[i*3+2]){
 			victor=vals[i*3];
@@ -212,7 +212,7 @@ function calculateMove(board){
 		}
 	}
 	move = moves[Math.floor(Math.random()*moves.length)];
-	console.log(move+":"+max);
+	//console.log(move+":"+max);
 	return place(board,move-1,'X');
 }
 
