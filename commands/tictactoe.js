@@ -21,8 +21,7 @@ module.exports = {
 				if(other.id==768224881056677918){
 					toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,'X',6,7,8,9])+'\`\`\`\nIt\'s <@'+message.author.id+'>(O)\'s turn!'
 				}
-				else{
-					message.channel.send(toSend).then(msg=>{
+				message.channel.send(toSend).then(msg=>{
 						//console.log(one);
 						
 						msg.react("1⃣").then(
@@ -35,7 +34,6 @@ module.exports = {
 						msg.react("8⃣").then(
 						msg.react("9⃣").then))))))));
 					});
-				}
 			}
 
 		} catch (err){
