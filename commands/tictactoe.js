@@ -185,7 +185,7 @@ function checkVals(vals){
 	if(vals[2]==vals[4] && vals[2]==vals[6]){
 		victor=vals[2];
 	}
-	if(getAvailMoves(vals).length==0){
+	if(victor=='none' && getAvailMoves(vals).length==0){
 		victor='draw';
 	}
 	return victor;
