@@ -96,6 +96,7 @@ module.exports = {
 							}
 							if(playerTwo==768224881056677918){
 								board=calculateMove(board);
+								boardState = checkBoard(board);
 								if(boardState=='X'){
 									message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerTwo+"> wins!");
 								}
