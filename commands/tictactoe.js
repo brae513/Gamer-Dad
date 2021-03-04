@@ -185,13 +185,8 @@ function checkVals(vals){
 	if(vals[2]==vals[4] && vals[2]==vals[6]){
 		victor=vals[2];
 	}
-	if(victor=='none'){
+	if(getAvailMoves(vals).length==0){
 		victor='draw';
-		for(var spot of spots){
-			if(board.charAt(spot)!='X' && board.charAt(spot)!='O'){
-				victor='none';
-			}
-		}
 	}
 	return victor;
 }
