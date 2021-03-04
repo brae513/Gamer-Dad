@@ -105,7 +105,9 @@ module.exports = {
 								else if(boardState=='draw'){
 									message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\nDraw!");
 								}
-								message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+playerOne+">(O)\'s turn!");
+								else{
+									message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+playerOne+">(O)\'s turn!");
+								}
 							}
 							else{
 								message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+otherPlayerId+">("+nextSym+")\'s turn!");
@@ -276,9 +278,9 @@ function getAvailMoves(vals){
 	}
 	return out;
 }
-var vals = ['X','X','O','O','O',6,'X',8,9];
+/*var vals = ['X','X','O','O','O',6,'X',8,9];
 var board = getBoard(vals);
-console.log(board.length);
+console.log(board.length);*/
 
 //var tic = require('./tictactoe');
 
