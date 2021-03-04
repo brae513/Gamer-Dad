@@ -17,19 +17,25 @@ module.exports = {
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
 				//const one = client.emojis.cache.get("816812179432538154");
-				message.channel.send(getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!').then(msg=>{
-					//console.log(one);
-					
-					msg.react("1⃣").then(
-					msg.react("2⃣").then(
-					msg.react("3⃣").then(
-					msg.react("4⃣").then(
-					msg.react("5⃣").then(
-					msg.react("6⃣").then(
-					msg.react("7⃣").then(
-					msg.react("8⃣").then(
-					msg.react("9⃣").then))))))));
-				});
+				var toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!';
+				if(other.id==768224881056677918){
+					toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,'X',6,7,8,9])+'\`\`\`\nIt\'s <@'+message.author.id+'>(O)\'s turn!'
+				}
+				else{
+					message.channel.send(toSend).then(msg=>{
+						//console.log(one);
+						
+						msg.react("1⃣").then(
+						msg.react("2⃣").then(
+						msg.react("3⃣").then(
+						msg.react("4⃣").then(
+						msg.react("5⃣").then(
+						msg.react("6⃣").then(
+						msg.react("7⃣").then(
+						msg.react("8⃣").then(
+						msg.react("9⃣").then))))))));
+					});
+				}
 			}
 
 		} catch (err){
@@ -94,6 +100,11 @@ module.exports = {
 							}
 							message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+otherPlayerId+">("+nextSym+")\'s turn!");
 						}
+						
+						if(playerTwo==768224881056677918){
+							board=calculateMove(board);
+							message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+playerOne+">(O)\'s turn!");
+						}
 					}
 					else{
 						// TODO: reply with taken spot here
@@ -144,7 +155,10 @@ function place(board,spot,val){
 }
 
 function checkBoard(board){
-	var vals = getVals(board);
+	checkVals(board.getVals);
+}
+
+function checkVals(vals){
 	var victor = 'none';
 	for(var i=0;i<3;i++){
 		if(vals[i*3]==vals[i*3+1] && vals[i*3]==vals[i*3+2]){
@@ -171,7 +185,90 @@ function checkBoard(board){
 	return victor;
 }
 
+function calculateMove(board){
+	var max = -11;
+	var move = 1;
+	var vals = getVals(board);
+	var avail = getAvailMoves(vals);
+	for(var m of avail){
+		var temp = [...vals];
+		temp[m-1]='X';
+		var score = maxMove(temp);
+		console.log(score+":"+m);
+		if(score>max){
+			move=m;
+			max=score;
+		}
+	}
+	console.log(move+":"+max);
+	return place(board,move-1,'X');
+}
 
+function maxMove(vals){
+	var check = checkVals(vals);
+	//console.log("max:"+vals+":"+check);
+	if(check=='draw'){
+		return 0;
+	}
+	if(check=='X'){
+		return 10;
+	}
+	if(check=='O'){
+		return -10;
+	}
+	var avails = getAvailMoves(vals);
+	var min = 10;
+	for(var m of avails){
+		var temp = [...vals];
+		temp[m-1]='O';
+		var score = minMove(temp);
+		if(min>score){
+			min=score;
+		}
+	}
+	return min;
+}
+
+function minMove(vals){
+	var check = checkVals(vals);
+	if(check=='draw'){
+		return 0;
+	}
+	if(check=='X'){
+		return 10;
+	}
+	if(check=='O'){
+		return -10;
+	}
+	//return 0;
+	var avails = getAvailMoves(vals);
+	var max = -10;
+	for(var m of avails){
+		var temp = [...vals];
+		temp[m-1]='X';
+		var score = maxMove(temp);
+		if(max<score){
+			max=score;
+		}
+	}
+	return max;
+}
+
+function getAvailMoves(vals){
+	var out = [];
+	for(var val of vals){
+		if(val!='X' && val!='O'){
+			out.push(val);
+		}
+	}
+	return out;
+}
+/*var vals = ['X','X','O','O','O',6,'X',8,9];
+var board = getBoard(vals);
+console.log(checkVals(vals));
+console.log(getAvailMoves(getVals(board)));
+console.log(maxMove(getVals(board)));
+console.log(calculateMove(board));*/
 
 //var tic = require('./tictactoe');
 
