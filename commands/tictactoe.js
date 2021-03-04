@@ -158,6 +158,7 @@ function checkBoard(board){
 
 function checkVals(vals){
 	var victor = 'none';
+	console.log(vals);
 	for(var i=0;i<3;i++){
 		if(vals[i*3]==vals[i*3+1] && vals[i*3]==vals[i*3+2]){
 			victor=vals[i*3];
