@@ -17,9 +17,11 @@ module.exports = {
 				var other = message.mentions.members.last();
 				//var tic = require('./tictactoe');
 				//const one = client.emojis.cache.get("816812179432538154");
-				var toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,5,6,7,8,9])+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!';
+				var vals = [1,2,3,4,5,6,7,8,9];
+				var toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!';
 				if(other.id==768224881056677918){
-					toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard([1,2,3,4,'X',6,7,8,9])+'\`\`\`\nIt\'s <@'+message.author.id+'>(O)\'s turn!'
+					vals[Math.random()*9]='X';
+					toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+message.author.id+'>(O)\'s turn!'
 				}
 				message.channel.send(toSend).then(msg=>{
 						//console.log(one);
@@ -92,13 +94,16 @@ module.exports = {
 							else{
 								nextSym='O';
 							}
-							message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+otherPlayerId+">("+nextSym+")\'s turn!");
+							if(playerTwo==768224881056677918){
+								board=calculateMove(board);
+								message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+playerOne+">(O)\'s turn!");
+							}
+							else{
+								message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+otherPlayerId+">("+nextSym+")\'s turn!");
+							}
 						}
 						
-						if(playerTwo==768224881056677918){
-							board=calculateMove(board);
-							message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+playerOne+">(O)\'s turn!");
-						}
+						
 					}
 					else{
 						// TODO: reply with taken spot here
@@ -182,7 +187,7 @@ function checkVals(vals){
 
 function calculateMove(board){
 	var max = -11;
-	var move = 1;
+	var moves = [1];
 	var vals = getVals(board);
 	var avail = getAvailMoves(vals);
 	for(var m of avail){
@@ -191,10 +196,14 @@ function calculateMove(board){
 		var score = maxMove(temp);
 		console.log(score+":"+m);
 		if(score>max){
-			move=m;
+			moves=[m];
 			max=score;
 		}
+		else if(score==max){
+			moves.push(m);
+		}
 	}
+	move = moves[Math.floor(Math.random()*moves.length)];
 	console.log(move+":"+max);
 	return place(board,move-1,'X');
 }
