@@ -167,7 +167,7 @@ function place(board,spot,val){
 }
 
 function checkBoard(board){
-	checkVals(getVals(board));
+	return checkVals(getVals(board));
 }
 
 function checkVals(vals){
