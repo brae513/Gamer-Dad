@@ -20,7 +20,7 @@ module.exports = {
 				var vals = [1,2,3,4,5,6,7,8,9];
 				var toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!';
 				if(other.id==768224881056677918){
-					vals[Math.random()*9]='X';
+					vals[Math.floor(Math.random()*9)]='X';
 					toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+message.author.id+'>(O)\'s turn!'
 				}
 				message.channel.send(toSend).then(msg=>{
@@ -96,6 +96,15 @@ module.exports = {
 							}
 							if(playerTwo==768224881056677918){
 								board=calculateMove(board);
+								if(boardState=='X'){
+									message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerTwo+"> wins!");
+								}
+								else if(boardState=='O'){
+									message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerOne+"> wins!");
+								}
+								else if(boardState=='draw'){
+									message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\nDraw!");
+								}
 								message.edit(getHeader(playerOne,playerTwo)+"\n\`\`\`"+board+"\`\`\`\nIt\'s <@"+playerOne+">(O)\'s turn!");
 							}
 							else{
