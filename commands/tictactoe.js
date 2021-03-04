@@ -76,7 +76,7 @@ module.exports = {
 				if(spot!=-1){
 					if(isEmpty(board,spot)){
 						board=place(board,spot,curSymbol);
-						boardState = checkBoard(board);
+						var boardState = checkBoard(board);
 						if(boardState=='X'){
 							message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerTwo+"> wins!");
 						}
