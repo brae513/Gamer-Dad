@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 
 const lastFrame = 7549;
-const delay = 500;
+const delay = 1000;
 const path = './utils/badApple/';
 
 var msg;
