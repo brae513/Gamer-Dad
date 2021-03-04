@@ -61,11 +61,7 @@ module.exports = {
 				otherPlayerId=playerOne;
 				curSymbol="X";
 			}
-			//console.log(header);
-			console.log(board);
-			console.log(lastLine);
-			console.log(playerOne);
-			console.log(playerTwo);
+			console.log(board.length);
 			
 			if(curPlayerId == user.id){
 				var spot=-1;
