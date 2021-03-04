@@ -149,7 +149,7 @@ function place(board,spot,val){
 }
 
 function checkBoard(board){
-	checkVals(board.getVals);
+	checkVals(getVals(board));
 }
 
 function checkVals(vals){
@@ -258,12 +258,9 @@ function getAvailMoves(vals){
 	}
 	return out;
 }
-/*var vals = ['X','X','O','O','O',6,'X',8,9];
+var vals = ['X','X','O','O','O',6,'X',8,9];
 var board = getBoard(vals);
-console.log(checkVals(vals));
-console.log(getAvailMoves(getVals(board)));
-console.log(maxMove(getVals(board)));
-console.log(calculateMove(board));*/
+console.log(board.length);
 
 //var tic = require('./tictactoe');
 
