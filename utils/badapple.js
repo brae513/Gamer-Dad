@@ -10,13 +10,17 @@ var curSpot = 0;
 var spd = 1;
 
 function start(message,speed){
-	msg=message;
-	curSpot = 0;
-	spd=speed;
-	if(spd<1){
-		spd=1;
-	}
-	nextFrame();
+	curSpot = 10000;
+	setTimeout(() => {
+		msg=message;
+		curSpot = 0;
+		spd=speed;
+		if(spd<1){
+			spd=1;
+		}
+		nextFrame();
+	},delay*10);
+	
 }
 
 function nextFrame(){

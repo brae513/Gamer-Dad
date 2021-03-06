@@ -9,7 +9,7 @@ module.exports = {
 	execute(client, message, args) {
 		try{
 			var people = [ "Diego","Kaleb","Smeag","Race","Marc","Brae","Erick","Joeboi","Dom","Brady","Connor"];
-			var games = [ "tic tac toe","minesweeper","rock paper scissors","solitaire","pinball"];
+			var games = [ "tic tac toe","minesweeper","rock paper scissors","solitaire","pinball","battleship"];
 			var person = people[Math.floor(Math.random()*people.length)];
 			var game = games[Math.floor(Math.random()*games.length)];
 			var msg = game+" against "+person+" and crushing them";
