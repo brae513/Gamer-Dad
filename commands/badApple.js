@@ -9,13 +9,13 @@ module.exports = {
 		try{
 			message.channel.send('\`\`\`Bad Apple\`\`\`').then(msg => {
 				if(args.length==1){
-					//var parsed = parseInt(args[0]);
-					//var spd = Math.max(1,parsed);
+					var parsed = parseInt(args[0]);
+					var spd = Math.max(1,parsed);
 					//console.log(spd);
-					badAppleUtil.start(msg,args[0]);
+					badAppleUtil.start(msg,spd);
 				}
 				else{
-					badAppleUtil.start(msg,1);
+					badAppleUtil.start(msg,30);
 				}
 			});
 
