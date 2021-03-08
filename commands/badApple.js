@@ -9,8 +9,9 @@ module.exports = {
 		try{
 			message.channel.send('\`\`\`Bad Apple\`\`\`').then(msg => {
 				if(args.length==1){
-					console.log(args[0]);
-					badAppleUtil.start(msg,args[0]);
+					var spd = Math.min(1,args[0]);
+					console.log(spd);
+					badAppleUtil.start(msg,spd);
 				}
 				badAppleUtil.start(msg,1);
 			});

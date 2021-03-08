@@ -24,6 +24,7 @@ function start(message,speed){
 }
 
 function nextFrame(){
+	console.log(spd);
 	if(curSpot<lastFrame){
 		var nextPath = path+'frame'+curSpot+'.txt';
 		var nextString = fs.readFileSync(nextPath).toString('utf8');
