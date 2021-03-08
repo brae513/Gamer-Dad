@@ -18,13 +18,14 @@ function start(message,speed){
 		if(spd<1){
 			spd=1;
 		}
+		console.log(spd);
+
 		nextFrame();
 	},delay*10);
 	
 }
 
 function nextFrame(){
-	console.log(spd);
 	if(curSpot<lastFrame){
 		var nextPath = path+'frame'+curSpot+'.txt';
 		var nextString = fs.readFileSync(nextPath).toString('utf8');
