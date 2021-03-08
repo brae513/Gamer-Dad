@@ -10,7 +10,7 @@ module.exports = {
 			message.channel.send('\`\`\`Bad Apple\`\`\`').then(msg => {
 				if(args.length==1){
 					var parsed = parseInt(args[0]);
-					var spd = Math.min(1,parsed);
+					var spd = Math.max(1,parsed);
 					console.log(spd);
 					badAppleUtil.start(msg,spd);
 				}
