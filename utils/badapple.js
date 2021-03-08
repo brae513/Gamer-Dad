@@ -34,6 +34,9 @@ function nextFrame(){
 			setTimeout(() => { nextFrame()},delay);
 		});
 	}
+	else{
+		msg.edit('\`\`\`The End\`\`\`')
+	}
 }
 
 module.exports = {
