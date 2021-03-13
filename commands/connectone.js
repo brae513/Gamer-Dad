@@ -15,14 +15,14 @@ module.exports = {
 			}
 			else{
 				var other = message.mentions.members.last();
-				if(other.id==message.author.id){
-					message.channel.send("You can't challenge yourself");
-				}
+				//if(other.id==message.author.id){
+				//	message.channel.send("You can't challenge yourself");
+				//}
 				else if(other.id==768224881056677918){
-					message.channel.send("I beat <@"+message.author.id+"> in connect one!");
+					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect one!\n\`\`\` 1\n X\`\`\`\n I beat <@"+message.author.id+"> in connect one!");
 				}
 				else{
-					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect one!\n\`\`\` 1\n_\`\`\`\n It's <@"+other.id+"> turn").then(msg =>{
+					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect one!\n\`\`\` 1\n _\`\`\`\n It's <@"+other.id+"> turn").then(msg =>{
 						msg.react("1⃣");
 					});
 				}
@@ -44,10 +44,10 @@ module.exports = {
 			var playerOne = header.substring(header.indexOf('<@')+2,header.indexOf('>'));
 			var playerTwo = header.substring(header.lastIndexOf('<@')+2,header.lastIndexOf('>'));
 			
-			console.log("got here!");
+			console.log("got here!"+reaction.emoji.name);
 			
 			if(reaction.emoji.name.includes("1")){
-				message.edit("Connect one between <@"+playerOne+">(O) and <@"+other.name+">(X) in connect one!\n\`\`\` 1\n_\`\`\`\n <@"+playerTwo+"> beat <@"+playerOne+"> in connect one!");
+				message.edit("Connect one between <@"+playerOne+">(O) and <@"+playerTwo.id+">(X) in connect one!\n\`\`\` 1\n X\`\`\`\n <@"+playerTwo+"> beat <@"+playerOne+"> in connect one!");
 			}
 		} catch (err){
 			console.log("Error in connect one");
