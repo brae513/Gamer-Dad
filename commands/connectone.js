@@ -22,7 +22,7 @@ module.exports = {
 					message.channel.send("I beat <@"+message.author.id+"> in connect one!");
 				}
 				else{
-					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.name+">(X) in connect one!\n\`\`\` 1\n_\`\`\`\n It's <@"+other.id+"> turn").then(msg =>{
+					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect one!\n\`\`\` 1\n_\`\`\`\n It's <@"+other.id+"> turn").then(msg =>{
 						msg.react("1⃣");
 					});
 				}
@@ -43,6 +43,8 @@ module.exports = {
 			var curPlayerId = lastLine.substring(lastLine.indexOf('<@')+2,lastLine.indexOf('>'));
 			var playerOne = header.substring(header.indexOf('<@')+2,header.indexOf('>'));
 			var playerTwo = header.substring(header.lastIndexOf('<@')+2,header.lastIndexOf('>'));
+			
+			console.log("got here!");
 			
 			if(reaction.emoji.name.includes("1")){
 				message.edit("Connect one between <@"+playerOne+">(O) and <@"+other.name+">(X) in connect one!\n\`\`\` 1\n_\`\`\`\n <@"+playerTwo+"> beat <@"+playerOne+"> in connect one!");

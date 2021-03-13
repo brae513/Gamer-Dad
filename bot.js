@@ -119,7 +119,7 @@ client.on('messageReactionAdd', (reaction,user) => {
 			if(message.content.substring(0,9)=='tictactoe'){
 				client.commands.get('tictactoe').react(message,reaction,user);
 			}
-			else if(message.content.substring(0,10)=='connectone'){
+			else if(message.content.substring(0,11)=='Connect one'){
 				client.commands.get('connectone').react(message,reaction,user);
 			}
 		}
