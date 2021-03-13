@@ -46,7 +46,7 @@ module.exports = {
 			
 			console.log("got here!"+reaction.emoji.name);
 			
-			if(reaction.emoji.name.includes("1")){
+			if(reaction.emoji.name.includes("1") && playerTwo == user.id){
 				message.edit("Connect one between <@"+playerOne+">(O) and <@"+playerTwo.id+">(X) in connect one!\n\`\`\` 1\n X\`\`\`\n <@"+playerTwo+"> beat <@"+playerOne+"> in connect one!");
 			}
 		} catch (err){
