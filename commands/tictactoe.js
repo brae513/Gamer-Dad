@@ -15,27 +15,29 @@ module.exports = {
 			}
 			else{
 				var other = message.mentions.members.last();
-				//var tic = require('./tictactoe');
-				//const one = client.emojis.cache.get("816812179432538154");
-				var vals = [1,2,3,4,5,6,7,8,9];
-				var toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!';
-				if(other.id==768224881056677918){
-					vals[Math.floor(Math.random()*9)]='X';
-					toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+message.author.id+'>(O)\'s turn!'
+				
+				if(other.id == message.author.id){
+					message.channel.send("You can't play against yourself, but if you have no friends you can challenge me instead");
 				}
-				message.channel.send(toSend).then(msg=>{
-						//console.log(one);
-						
-						msg.react("1⃣").then(
-						msg.react("2⃣").then(
-						msg.react("3⃣").then(
-						msg.react("4⃣").then(
-						msg.react("5⃣").then(
-						msg.react("6⃣").then(
-						msg.react("7⃣").then(
-						msg.react("8⃣").then(
-						msg.react("9⃣").then))))))));
-					});
+				else{
+					var vals = [1,2,3,4,5,6,7,8,9];
+					var toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+other.id+'>(X)\'s turn!';
+					if(other.id==768224881056677918){
+						vals[Math.floor(Math.random()*9)]='X';
+						toSend = getHeader(message.author.id,other.id)+'\n\`\`\`' + getBoard(vals)+'\`\`\`\nIt\'s <@'+message.author.id+'>(O)\'s turn!'
+					}
+					message.channel.send(toSend).then(msg=>{						
+							msg.react("1⃣").then(
+							msg.react("2⃣").then(
+							msg.react("3⃣").then(
+							msg.react("4⃣").then(
+							msg.react("5⃣").then(
+							msg.react("6⃣").then(
+							msg.react("7⃣").then(
+							msg.react("8⃣").then(
+							msg.react("9⃣").then))))))));
+						});
+				}
 			}
 
 		} catch (err){
@@ -128,13 +130,9 @@ module.exports = {
 			console.log(err.stack);
 		}
 	},
-	/*getBoard,
-	getVals,
-	isEmpty,
-	place,*/
 };
 
-
+//returns a text-version of a board based on an array of values
 function getBoard(vals){
 	var topLine = '     |     |     ';
 	var botLine = '_____|_____|_____';
@@ -145,34 +143,38 @@ function getBoard(vals){
 	return board;
 }
 
+//gives the default header for messages
 function getHeader(p1,p2){
 	return 'tictactoe between <@'+p1 +'> (O) and <@'+p2+'> (X)!';
 }
 
+//returns an array version of a board
 function getVals(board){
 	var vals = [];
 	for(var spot of spots){
 		vals.push(board.charAt(spot));
 	}
-	//vals=[board.charAt(20),board.charAt(26),board.charAt(32),board.charAt(74),board.charAt(80),board.charAt(86),board.charAt(128),board.charAt(134),board.charAt(140)];
 	return vals;
 }
 
+//Checks if spot is empty (available to move on)
 function isEmpty(board,spot){
 	return getVals(board)[spot]!='X' && getVals(board)[spot]!='O';
 }
 
+//Place a value on the board
 function place(board,spot,val){
 	return board.substring(0,spots[spot])+val+board.substring(spots[spot]+1);
 }
 
+//check board to see if there is a victor or a draw
 function checkBoard(board){
 	return checkVals(getVals(board));
 }
 
+//Check array of vals to see if there is a victor or a draw
 function checkVals(vals){
 	var victor = 'none';
-	//console.log(vals);
 	for(var i=0;i<3;i++){
 		if(vals[i*3]==vals[i*3+1] && vals[i*3]==vals[i*3+2]){
 			victor=vals[i*3];
@@ -192,7 +194,7 @@ function checkVals(vals){
 	}
 	return victor;
 }
-
+//Calculate gamer dad's best move on the current board
 function calculateMove(board){
 	var max = -11;
 	var moves = [1];
@@ -212,13 +214,12 @@ function calculateMove(board){
 		}
 	}
 	move = moves[Math.floor(Math.random()*moves.length)];
-	//console.log(move+":"+max);
 	return place(board,move-1,'X');
 }
 
+//MinMax tree max side
 function maxMove(vals){
 	var check = checkVals(vals);
-	//console.log("max:"+vals+":"+check);
 	if(check=='draw'){
 		return 0;
 	}
@@ -241,6 +242,7 @@ function maxMove(vals){
 	return min;
 }
 
+//MinMax tree min side
 function minMove(vals){
 	var check = checkVals(vals);
 	if(check=='draw'){
@@ -252,7 +254,6 @@ function minMove(vals){
 	if(check=='O'){
 		return -10;
 	}
-	//return 0;
 	var avails = getAvailMoves(vals);
 	var max = -10;
 	for(var m of avails){
@@ -275,16 +276,3 @@ function getAvailMoves(vals){
 	}
 	return out;
 }
-/*var vals = ['X','X','O','O','O',6,'X',8,9];
-var board = getBoard(vals);
-console.log(board.length);*/
-
-//var tic = require('./tictactoe');
-
-/*var board = getBoard(['O',2,3,4,5,6,7,8,'X']);
-board = place(board,4,'O');
-console.log(board);
-var vals = getVals(board);
-console.log(vals);
-console.log(isEmpty(board,0));
-console.log(checkBoard(board));*/

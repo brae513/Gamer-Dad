@@ -115,8 +115,13 @@ client.on('ready', () => {
 client.on('messageReactionAdd', (reaction,user) => {
 	try{
 		var message = reaction.message;
-		if(message.editable && message.content.substring(0,9)=='tictactoe'){
-			client.commands.get('tictactoe').react(message,reaction,user);
+		if(message.editable){
+			if(message.content.substring(0,9)=='tictactoe'){
+				client.commands.get('tictactoe').react(message,reaction,user);
+			}
+			else if(message.content.substring(0,10)=='connectone'){
+				client.commands.get('connectone').react(message,reaction,user);
+			}
 		}
 		if(message.guild != null && message.guild.id === '599851762400362517'){
 			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5){
