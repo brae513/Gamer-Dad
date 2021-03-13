@@ -15,9 +15,9 @@ module.exports = {
 			}
 			else{
 				var other = message.mentions.members.last();
-				//if(other.id==message.author.id){
-				//	message.channel.send("You can't challenge yourself");
-				//}
+				if(other.id==message.author.id){
+					message.channel.send("You can't challenge yourself");
+				}
 				else if(other.id==768224881056677918){
 					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect one!\n\`\`\` 1\n X\`\`\`\n I beat <@"+message.author.id+"> in connect one!");
 				}
