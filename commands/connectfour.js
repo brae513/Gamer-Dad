@@ -73,7 +73,7 @@ module.exports = {
 				otherPlayerId=playerOne;
 				curSymbol="X";
 			}
-			
+			console.log(curPlayerId);
 			if(curPlayerId == user.id){
 				for(var i=1;i<=7;i++){
 					if(reaction.emoji.name.includes(""+i)){
