@@ -122,6 +122,11 @@ client.on('messageReactionAdd', (reaction,user) => {
 			else if(message.content.substring(0,11)=='Connect one'){
 				client.commands.get('connectone').react(message,reaction,user);
 			}
+			else if(message.content.substring(0,12)=='Connect four'){
+				console.log("con4");
+				client.commands.get('connectfour').react(message,reaction,user);
+			}
+			console.log(message.content.substring(0,12);
 		}
 		if(message.guild != null && message.guild.id === '599851762400362517'){
 			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5){
