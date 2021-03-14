@@ -93,7 +93,8 @@ module.exports = {
 							}
 							else{
 								if( playerTwo == 768224881056677918){
-									
+									vals = aiMove(vals);
+									message.edit(genMessage(playerOne,playerTwo,getBoard(vals),curPlayerId));
 								}
 								else{
 									message.edit(genMessage(playerOne,playerTwo,getBoard(vals),otherPlayerId));
