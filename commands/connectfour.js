@@ -216,12 +216,11 @@ function checkVals(vals){
 					if(i>=3 || j>=4 || vals[i][j]!=vals[i+k][j+k]){
 						rdiag=false;
 					}
-					if(i>=3 || j<=3 || vals[i][j]!=vals[i+k][j-k]){
+					if(i>=3 || j<=2 || vals[i][j]!=vals[i+k][j-k]){
 						ldiag=false;
 					}
 				}
 				if(col || row || rdiag || ldiag){
-					//console.log(col+" "+row+" "+rdiag+" "+ldiag);
 					return vals[i][j];
 				}
 			}
@@ -274,7 +273,6 @@ function aiMove(vals){
 	else{
 		var realMoves = [];
 		if(loseIfMoves.length != moves.length){
-			console.log("!");
 			for(var i=0;i<moves.length;i++){
 				var valid = true;
 				for(var j=0;j<loseIfMoves.length;j++){
