@@ -272,22 +272,25 @@ function aiMove(vals){
 		return place(vals,loseMove,'X');
 	}
 	else{
+		var realMoves = [];
 		if(loseIfMoves.length != moves.length){
 			console.log("!");
 			for(var i=0;i<moves.length;i++){
 				var valid = true;
 				for(var j=0;j<loseIfMoves.length;j++){
-					if(lostIfMoves[j]==moves[i]){
+					if(loseIfMoves[j]==moves[i]){
 						valid=false;
 					}
 				}
 				if(valid){
-					console.log(moves[i]);
-					return place(vals,moves[i],'X');
+					realMoves.push(moves[i]);
 				}
 			}
 		}
-		return place(vals,moves[Math.floor(Math.random()*moves.length)],'X');
+		else{
+			realMoves=moves;
+		}
+		return place(vals,realMoves[Math.floor(Math.random()*realMoves.length)],'X');
 	}
 }
 
