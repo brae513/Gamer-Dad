@@ -112,6 +112,26 @@ client.on('ready', () => {
 	}
 });
 
+client.on('messageReactionRemove', (reaction,user) => {
+	try{
+		var message = reaction.message;
+		if(message.editable){
+			if(message.content.substring(0,9)=='tictactoe'){
+				client.commands.get('tictactoe').react(message,reaction,user);
+			}
+			else if(message.content.substring(0,11)=='Connect one'){
+				client.commands.get('connectone').react(message,reaction,user);
+			}
+			else if(message.content.substring(0,12)=='Connect four'){
+				client.commands.get('connectfour').react(message,reaction,user);
+			}
+		}
+	} catch (err){
+		console.log("error");
+		console.log(err.stack);
+	}
+});
+	
 client.on('messageReactionAdd', (reaction,user) => {
 	try{
 		var message = reaction.message;
@@ -123,10 +143,8 @@ client.on('messageReactionAdd', (reaction,user) => {
 				client.commands.get('connectone').react(message,reaction,user);
 			}
 			else if(message.content.substring(0,12)=='Connect four'){
-				console.log("con4");
 				client.commands.get('connectfour').react(message,reaction,user);
 			}
-			console.log(message.content.substring(0,12));
 		}
 		if(message.guild != null && message.guild.id === '599851762400362517'){
 			if(reaction.emoji.id===('699139118826913794') && reaction.count >=5){
