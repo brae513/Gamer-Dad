@@ -77,6 +77,7 @@ module.exports = {
 			if(curPlayerId == user.id){
 				for(var i=1;i<=7;i++){
 					if(reaction.emoji.name.includes(""+i)){
+						console.log("Attempting "+i);
 						var vals = getVals(board);
 						if(hasMove(vals,i)){
 							vals = place(vals,i,curSymbol);
@@ -93,8 +94,21 @@ module.exports = {
 							}
 							else{
 								if( playerTwo == 768224881056677918){
+									console.log("Fighting gamer dad...");
 									vals = aiMove(vals);
-									message.edit(genMessage(playerOne,playerTwo,getBoard(vals),curPlayerId));
+									var check = checkVals(vals);
+									if(check=='X'){
+										message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerTwo+"> wins!");
+									}
+									else if(check =='O'){
+										message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerOne+"> wins!");
+									}
+									else if(check == "draw"){
+										message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\nDraw!");
+									}
+									else{
+										message.edit(genMessage(playerOne,playerTwo,getBoard(vals),curPlayerId));
+									}
 								}
 								else{
 									message.edit(genMessage(playerOne,playerTwo,getBoard(vals),otherPlayerId));
