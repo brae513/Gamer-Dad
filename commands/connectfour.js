@@ -16,10 +16,21 @@ module.exports = {
 				if(other.id==message.author.id){
 					message.channel.send("You can't challenge yourself");
 				}
-				/*else if(other.id==768224881056677918){
-					message.channel.send("I prefer better games like connect one or tic tac toe right now");
-					//message.channel.send("Connect Four between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect four!\n\`\`\` 1\n X\`\`\`\n I beat <@"+message.author.id+"> in connect one!");
-				}*/
+				else if(other.id==768224881056677918){
+					var toSend = getHeader(message.author.id,other.id)+"\n";
+					var vals = startVals;
+					vals = place(vals,Math.floor(Math.random()*7),'X');
+					toSend+= "\`\`\`"+getBoard(startVals)+"\`\`\`\n";
+					toSend+= "It\'s <@"+message.author.id+">(O)\'s turn!";
+					message.channel.send(toSend).then(msg =>{
+						msg.react("1⃣").then(
+						msg.react("2⃣").then(
+						msg.react("3⃣").then(
+						msg.react("4⃣").then(
+						msg.react("5⃣").then(
+						msg.react("6⃣").then(
+						msg.react("7⃣")))))));
+					});				}
 				else{
 					var toSend = getHeader(message.author.id,other.id)+"\n";
 					toSend+= "\`\`\`"+getBoard(startVals)+"\`\`\`\n";
@@ -68,8 +79,9 @@ module.exports = {
 					if(reaction.emoji.name.includes(""+i)){
 						var vals = getVals(board);
 						if(hasMove(vals,i)){
-							place(vals,i,curSymbol);
+							vals = place(vals,i,curSymbol);
 							var check = checkVals(vals);
+							
 							if(check=='X'){
 								message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\n<@"+playerTwo+"> wins!");
 							}
@@ -80,7 +92,12 @@ module.exports = {
 								message.edit('Finished '+getHeader(playerOne,playerTwo)+'\n\`\`\`'+board+"\`\`\`\nDraw!");
 							}
 							else{
-								message.edit(genMessage(playerOne,playerTwo,getBoard(vals),otherPlayerId));
+								if( playerTwo == 768224881056677918){
+									
+								}
+								else{
+									message.edit(genMessage(playerOne,playerTwo,getBoard(vals),otherPlayerId));
+								}
 							}
 						}
 						//else{
@@ -114,6 +131,7 @@ function getHeader(p1,p2){
 	return 'Connect four between <@'+p1 +'> (O) and <@'+p2+'> (X)!';
 }
 
+//generates message to send
 function genMessage(p1,p2,board,curPlayer){
 	var out = getHeader(p1,p2)+"\n";
 	out+= "\`\`\`"+board+"\`\`\`\n";
@@ -147,13 +165,14 @@ function hasMove(vals,col){
 
 //Place a value on the board
 function place(vals,spot,val){
+	var newVals = JSON.parse(JSON.stringify(vals));
 	for(var i=5;i>=0;i--){
 		if(vals[i][spot]=='_'){
-			vals[i][spot]=val;
+			newVals[i][spot]=val;
 			break;
 		}
 	}
-	//return board.substring(0,spots[spot])+val+board.substring(spots[spot]+1);
+	return newVals;
 }
 
 //check board to see if there is a victor or a draw
@@ -172,7 +191,7 @@ function checkVals(vals){
 				var row = true;
 				var rdiag = true;
 				var ldiag = true;
-				console.log(i+","+j);
+				//console.log(i+","+j);
 
 				for(var k=1;k<4;k++){
 					if(j>=4 || vals[i][j]!=vals[i][j+k]){
@@ -189,7 +208,7 @@ function checkVals(vals){
 					}
 				}
 				if(col || row || rdiag || ldiag){
-					console.log(col+" "+row+" "+rdiag+" "+ldiag);
+					//console.log(col+" "+row+" "+rdiag+" "+ldiag);
 					return vals[i][j];
 				}
 			}
@@ -204,19 +223,87 @@ function checkVals(vals){
 	return "draw";
 }
 
-var board = getBoard(startVals);
+function availMoves(vals){
+	var out = [];
+	for(var i = 0;i<7;i++){
+		if(vals[0][i]=='_'){
+			out.push(i);
+		}
+	}
+	return out;
+}
+
+function aiMove(vals){
+
+	var winMove = -1;
+	var loseMove = -1;
+	var loseIfMoves = [];
+	var moves = availMoves(vals);
+	for(var move of moves){
+		var temp = place(vals,move,'X');
+		if(checkVals(temp)=='X'){
+			winMove=move;
+		}
+		if(checkVals(place(temp,move,'O'))=='O'){
+			loseIfMoves.push(move);
+		}
+		temp = place(vals,move,'O');
+		if(checkVals(temp)=='O'){
+			loseMove=move;
+		}
+	}
+	if(winMove>-1){
+		return place(vals,winMove,'X');
+	}
+	else if(loseMove>-1){
+		return place(vals,loseMove,'X');
+	}
+	else{
+		if(loseIfMoves.length != moves.length){
+			console.log("!");
+			for(var i=0;i<moves.length;i++){
+				var valid = true;
+				for(var j=0;j<loseIfMoves.length;j++){
+					if(lostIfMoves[j]==moves[i]){
+						valid=false;
+					}
+				}
+				if(valid){
+					console.log(moves[i]);
+					return place(vals,moves[i],'X');
+				}
+			}
+		}
+		return place(vals,moves[Math.floor(Math.random()*moves.length)],'X');
+	}
+}
+
+/*var board = getBoard(startVals);
 console.log(board+"\n");
 var vals = getVals(board);
 console.log(checkVals(vals));
-place(vals,1,'X');
-place(vals,2,'X');
-place(vals,2,'X');
-place(vals,3,'X');
-place(vals,3,'X');
-place(vals,3,'X');
-place(vals,4,'O');
-place(vals,4,'X');
-place(vals,4,'X');
-place(vals,4,'X');
+for(var i=0;i<5;i++){
+	if(i!=2){
+		if(i!=3 && i!=4)
+		vals=place(vals,i,'O');
+		else
+		vals=place(vals,i,'X');
+		if(i!=1)
+			vals=place(vals,i,'O');
+		else
+			vals=place(vals,i,'X');
+		vals=place(vals,i,'O');
+	}
+}
+vals=place(vals,5,'O');
+vals=place(vals,5,'X');
+vals=place(vals,5,'O');
+vals=place(vals,5,'O');
+vals=place(vals,6,'O');
+vals=place(vals,6,'X');
+vals=place(vals,6,'X');
 console.log(getBoard(vals));
 console.log(checkVals(vals));
+
+console.log(getBoard(aiMove(vals)));
+*/
