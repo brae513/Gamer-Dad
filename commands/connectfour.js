@@ -20,7 +20,7 @@ module.exports = {
 					var toSend = getHeader(message.author.id,other.id)+"\n";
 					var vals = startVals;
 					vals = place(vals,Math.floor(Math.random()*7),'X');
-					toSend+= "\`\`\`"+getBoard(startVals)+"\`\`\`\n";
+					toSend+= "\`\`\`"+getBoard(vals)+"\`\`\`\n";
 					toSend+= "It\'s <@"+message.author.id+">(O)\'s turn!";
 					message.channel.send(toSend).then(msg =>{
 						msg.react("1⃣").then(
