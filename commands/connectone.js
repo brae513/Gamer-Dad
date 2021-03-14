@@ -1,8 +1,5 @@
 
 
-const spots = [20,26,32,74,80,86,128,134,140];
-const reactions = ['816484885358837761'];
-
 module.exports = {
 	name: 'connectone',
 	description: 'Connect one',
@@ -19,10 +16,10 @@ module.exports = {
 					message.channel.send("You can't challenge yourself");
 				}
 				else if(other.id==768224881056677918){
-					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect one!\n\`\`\` 1\n X\`\`\`\n I beat <@"+message.author.id+"> in connect one!");
+					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X)!\n\`\`\` 1\n X\`\`\`\n I beat <@"+message.author.id+"> in connect one!");
 				}
 				else{
-					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X) in connect one!\n\`\`\` 1\n _\`\`\`\n It's <@"+other.id+"> turn").then(msg =>{
+					message.channel.send("Connect one between <@"+message.author.id+">(O) and <@"+other.id+">(X)!\n\`\`\` 1\n _\`\`\`\n It's <@"+other.id+"> turn").then(msg =>{
 						msg.react("1⃣");
 					});
 				}
@@ -43,8 +40,6 @@ module.exports = {
 			var curPlayerId = lastLine.substring(lastLine.indexOf('<@')+2,lastLine.indexOf('>'));
 			var playerOne = header.substring(header.indexOf('<@')+2,header.indexOf('>'));
 			var playerTwo = header.substring(header.lastIndexOf('<@')+2,header.lastIndexOf('>'));
-			
-			console.log("got here!"+reaction.emoji.name);
 			
 			if(reaction.emoji.name.includes("1") && playerTwo == user.id){
 				message.edit("Connect one between <@"+playerOne+">(O) and <@"+playerTwo+">(X) in connect one!\n\`\`\` 1\n X\`\`\`\n <@"+playerTwo+"> beat <@"+playerOne+"> in connect one!");
