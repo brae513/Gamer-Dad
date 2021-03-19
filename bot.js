@@ -112,6 +112,27 @@ client.on('ready', () => {
 	}
 });
 
+client.on('voiceStateUpdate',(oldState, newState) => {
+	try{
+		if(newState.member.id === '161975669834776576'){
+			
+			if(newState.connection.status === 0 && oldState.connection.status === 4){
+				client.guilds.fetch('161976243233751040').then(guild =>{
+					guild.channels.resolve('190981291192090624').send("https://tenor.com/view/alex-alex-is-alex-is-online-discord-alex-discor-gif-18621584");
+				});
+			}
+			else if(newState.connection.status === 4 && oldState.connection.status === 0){
+				client.guilds.fetch('161976243233751040').then(guild =>{
+					guild.channels.resolve('190981291192090624').send("https://tenor.com/view/alex-alex-is-offline-alex-is-online-gif-19938100");
+				});
+			}
+		}
+	} catch (err){
+		console.log("error");
+		console.log(err.stack);
+	}
+}
+
 client.on('messageReactionRemove', (reaction,user) => {
 	try{
 		var message = reaction.message;
