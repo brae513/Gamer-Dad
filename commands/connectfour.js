@@ -204,7 +204,6 @@ function checkVals(vals){
 				var row = true;
 				var rdiag = true;
 				var ldiag = true;
-				//console.log(i+","+j);
 
 				for(var k=1;k<4;k++){
 					if(j>=4 || vals[i][j]!=vals[i][j+k]){
