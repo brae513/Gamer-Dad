@@ -114,7 +114,7 @@ client.on('ready', () => {
 
 client.on('voiceStateUpdate',(oldState, newState) => {
 	try{
-		if(newState.member.id === '161975669834776576'){
+		if(newState.member.id === '135648747815305217'){
 			console.log(newState.connection);
 			if(newState.channel != null && oldState.channel === null && newState.guild.id =='599851762400362517'){
 				client.guilds.fetch('599851762400362517').then(guild =>{
