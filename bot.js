@@ -131,7 +131,7 @@ client.on('voiceStateUpdate',(oldState, newState) => {
 		console.log("error");
 		console.log(err.stack);
 	}
-}
+});
 
 client.on('messageReactionRemove', (reaction,user) => {
 	try{
