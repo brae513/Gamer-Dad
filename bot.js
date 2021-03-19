@@ -116,13 +116,13 @@ client.on('voiceStateUpdate',(oldState, newState) => {
 	try{
 		if(newState.member.id === '161975669834776576'){
 			console.log(newState.connection);
-			if(newState.voiceChannel != undefined && oldState.voiceChannel === undefined){
+			if(newState.channel != null && oldState.channel === null){
 				console.log("Join?");
 				client.guilds.fetch('161976243233751040').then(guild =>{
 					guild.channels.resolve('190981291192090624').send("https://tenor.com/view/alex-alex-is-alex-is-online-discord-alex-discor-gif-18621584");
 				});
 			}
-			else if(newState.voiceChannel === undefined && oldState.voiceChannel != undefined){
+			else if(newState.channel === null && oldState.channel != null){
 				console.log("Left?");
 				client.guilds.fetch('161976243233751040').then(guild =>{
 					guild.channels.resolve('190981291192090624').send("https://tenor.com/view/alex-alex-is-offline-alex-is-online-gif-19938100");
