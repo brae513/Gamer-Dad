@@ -117,6 +117,13 @@ client.on('voiceStateUpdate',(oldState, newState) => {
 		if(newState.member.id === '135648747815305217'){
 			console.log(newState.connection);
 			if(newState.channel != null && oldState.channel === null && newState.guild.id =='599851762400362517'){
+				var now = new Date();
+				now.setHours(now.getHours()+8);
+				if(now.getMonth()==5 && now.getDate()==7){
+					client.guilds.fetch('599851762400362517').then(guild =>{
+						guild.channels.resolve('618845562262913066').send("https://itsyourbirthday.today/#smeag + @<135648747815305217>");
+					});
+				}
 				client.guilds.fetch('599851762400362517').then(guild =>{
 					guild.channels.resolve('618845562262913066').send("https://tenor.com/view/alex-alex-is-alex-is-online-discord-alex-discor-gif-18621584");
 				});
