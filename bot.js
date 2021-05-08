@@ -121,7 +121,7 @@ client.on('voiceStateUpdate',(oldState, newState) => {
 				now.setHours(now.getHours()-8);
 				if(now.getMonth()==4 && now.getDate()==7){
 					client.guilds.fetch('599851762400362517').then(guild =>{
-						guild.channels.resolve('618845562262913066').send("https://itsyourbirthday.today/#smeag + @<135648747815305217>");
+						guild.channels.resolve('618845562262913066').send("https://itsyourbirthday.today/#smeag <@135648747815305217>");
 					});
 				}
 				client.guilds.fetch('599851762400362517').then(guild =>{
