@@ -119,7 +119,7 @@ client.on('voiceStateUpdate',(oldState, newState) => {
 			if(newState.channel != null && oldState.channel === null && newState.guild.id =='599851762400362517'){
 				var now = new Date();
 				now.setHours(now.getHours()-8);
-				if(now.getMonth()==5 && now.getDate()==7){
+				if(now.getMonth()==4 && now.getDate()==7){
 					client.guilds.fetch('599851762400362517').then(guild =>{
 						guild.channels.resolve('618845562262913066').send("https://itsyourbirthday.today/#smeag + @<135648747815305217>");
 					});
@@ -220,6 +220,11 @@ client.on('message', message => {
 			// 618845562262913066 bot channel
 
 			var content = message.content.toLowerCase();
+			if(message.author.id === '300041614322040842'){
+				if(Math.random()<0.01){
+					
+				}
+			}
 			if(message.author.id === '147136628215775233'){
 				message.react(message.guild.emojis.cache.get('699139118826913794'));
 				message.react(message.guild.emojis.cache.get('768625855286476812'));
