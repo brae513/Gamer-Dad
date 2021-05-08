@@ -222,7 +222,7 @@ client.on('message', message => {
 			var content = message.content.toLowerCase();
 			if(message.author.id === '300041614322040842'){
 				if(Math.random()<0.01){
-					
+					message.channel.send("https://cdn.discordapp.com/emojis/807855187318407179.gif?v=1");
 				}
 			}
 			if(message.author.id === '147136628215775233'){
