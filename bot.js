@@ -1,10 +1,9 @@
-const commandUtil = require('./utils/commandUtil');
-
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const fs = require('fs');
-const profile = require('./utils/profile.js');
 
+const commandUtil = require('./utils/commandUtil');
+const profile = require('./utils/profile.js');
 
 //const db = require('quick.db');
 
@@ -103,6 +102,8 @@ client.on('ready', () => {
 				rejectUnauthorized: false
 			}
 		});
+		
+		profile.init(pool);
 		
 		pool.connect();
 		pool.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
