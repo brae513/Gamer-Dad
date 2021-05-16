@@ -98,7 +98,7 @@ client.on('ready', () => {
 		
 		const { Pool } = require ('pg');  
 		const pool = new Pool({
-			connectionString: process.env.DATABASE_URL.parse,
+			connectionString: process.env.DATABASE_URL,
 			ssl: {
 				rejectUnauthorized: false
 			}
