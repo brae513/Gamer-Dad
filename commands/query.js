@@ -1,4 +1,4 @@
-const commandUtil = require("../utils/profile.js");
+const profile = require("../utils/profile.js");
 
 
 module.exports = {
