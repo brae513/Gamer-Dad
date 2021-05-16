@@ -111,7 +111,6 @@ client.on('ready', () => {
 			for (let row of res.rows) {
 				console.log(JSON.stringify(row));
 			}
-			pool.end();
 		});
 	} catch(err){
 		console.log("error in startup");

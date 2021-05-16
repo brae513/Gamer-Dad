@@ -12,13 +12,13 @@ function init(pool){
 }
 
 function query(query){
-	db.connect();
+	//db.connect();
 	db.query(query, (err, res) => {
 		if (err) throw err;
 		for (let row of res.rows) {
 			console.log(JSON.stringify(row));
 		}
-		db.end();
+		//db.end();
 	});
 }
 
