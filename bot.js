@@ -106,6 +106,15 @@ client.on('ready', () => {
 		   //password: process.env.password,
 			//ssl: true,
 		});
+		
+		pool.connect();
+		pool.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+			if (err) throw err;
+			for (let row of res.rows) {
+				console.log(JSON.stringify(row));
+			}
+			pool.end();
+		});
 	} catch(err){
 		console.log("error in startup");
 		console.log(err.stack);

@@ -11,6 +11,9 @@
     "fs": "0.0.1-security",
     "jimp": "^0.16.1",
     "node-fetch": "^2.6.1",
-    "pg": "^8.5.1"
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
   }
 }
