@@ -5,11 +5,15 @@ module.exports = {
 	name: 'query',
 	description: 'you cant use this',
 	random:false,
-	client:true,
+	client:false,
 	execute(message, args) {
 		try{
 			if(message.author.id === '161975669834776576'){
-				profile.query(arg[0]);
+				var string = "";
+				for(arg of args){
+					string+=arg+" ";
+				}
+				profile.query(string);
 			}
 		}catch(err){
 			console.log(err.stack);
