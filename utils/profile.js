@@ -1,5 +1,5 @@
 const fs = require('fs');
-const db = require('./utils/database.js');
+const db = require('./database.js');
 
 const profile_table = "profiles";
 

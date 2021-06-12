@@ -1,4 +1,4 @@
-const db = require('./utils/database.js');
+const db = require('../utils/database.js');
 
 function init(){
 	var res = db.query('SELECT msg_id FROM schedules');
