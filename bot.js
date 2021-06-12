@@ -88,8 +88,8 @@ function hourlyUpdates(){
 	
 }
 
-client.setInterval(newYearsReminder,1000)
-client.setInterval(hourlyUpdates(),
+client.setInterval(newYearsReminder,1000);
+client.setInterval(hourlyUpdates(),3600000);
 
 client.on('ready', () => {
 
