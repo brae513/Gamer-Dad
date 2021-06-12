@@ -1,5 +1,5 @@
 const fs = require('fs');
-const db = require('./utils/database.js');
+const db = require('./database.js');
 
 const profile_table = "profiles";
 
@@ -10,7 +10,7 @@ const defaultRaw = {
 //const defaultData = JSON.stringify(defaultRaw);
 
 function getProfile(id){
-	aQuery("select * from );
+	aQuery('select * from '+profile_table+' where id = '+id+';');
 }
 
 function saveProfile(id,data){
@@ -20,7 +20,8 @@ function saveProfile(id,data){
 function addDiegoBucks(id,amt){
 	
 }
-
+function remDiegoBucks(id,amt){
+}
 function getDiegoBucks(id){
 	res = db.query('SELECT diego_bucks FROM '+profile_table+' WHERE id = '+id+';');
 	console.log(res);
@@ -28,9 +29,7 @@ function getDiegoBucks(id){
 }
 
 module.exports = {
-	init,
 	getProfile,
-	query,
 	saveProfile,
 	addDiegoBucks,
 	remDiegoBucks,
