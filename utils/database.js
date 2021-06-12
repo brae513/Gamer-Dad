@@ -32,7 +32,6 @@ function query(query,values ){
 	try{
 		db.query(query,values, (err, res) => {
 			if (err) throw err;
-			return res;
 		});
 
 	} catch(err) {
@@ -43,7 +42,7 @@ function query(query,values ){
 
 async function aQuery(query){
 	try{
-		db.query(query, (err, res) => {
+		await db.query(query, (err, res) => {
 			if (err) throw err;
 			return res;
 		});
@@ -55,7 +54,7 @@ async function aQuery(query){
 }
 async function aQuery(query,values){
 	try{
-		db.query(query,values,(err, res) => {
+		await db.query(query,values,(err, res) => {
 			if (err) throw err;
 			return res;
 		});
