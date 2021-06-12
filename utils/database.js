@@ -28,7 +28,7 @@ function query(query){
 	return null;
 }
 
-function query(query,values ){
+function query2(query,values ){
 	try{
 		db.query(query,values, (err, res) => {
 			if (err) throw err;
@@ -52,7 +52,7 @@ async function aQuery(query){
 	}
 	return "Error";
 }
-async function aQuery(query,values){
+async function aQuery2(query,values){
 	try{
 		await db.query(query,values,(err, res) => {
 			if (err) throw err;
