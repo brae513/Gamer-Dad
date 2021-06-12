@@ -21,10 +21,10 @@ module.exports = {
 				var creator_id = message.author.id;
 				if(args.length==4){
 					var recurrence = args[4];
-					db.query('INSERT INTO schedules(creator_id,date,event_name,event_description,recurrence) VALUES ('+creator_id+','+date+','+event_name+','+event_description+','+recurrence+');';
+					db.query('INSERT INTO schedules(creator_id,date,event_name,event_description,recurrence) VALUES ('+creator_id+','+date+','+event_name+','+event_description+','+recurrence+');');
 				}
 				else{
-					db.query('INSERT INTO schedules(creator_id,date,event_name,event_description) VALUES ('+creator_id+','+date+','+event_name+','+event_description+');';
+					db.query('INSERT INTO schedules(creator_id,date,event_name,event_description) VALUES ('+creator_id+','+date+','+event_name+','+event_description+');');
 				}
 			}
 		}catch(err){
