@@ -1,4 +1,4 @@
-const db;
+var db;
 
 function init(pool){
 	db=pool;
