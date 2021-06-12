@@ -1,45 +1,71 @@
-const { Pool, Client } = require('pg');
+const db;
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
-function getProfile(id){
-
+function init(pool){
+	db=pool;
 }
 
-function saveProfile(id,data){
-
+function init(){
+	const { Pool } = require ('pg');  
+	db = new Pool({
+		connectionString: process.env.DATABASE_URL,
+		ssl: {
+			rejectUnauthorized: false
+		}
+	});
+	db.connect();
 }
 
-function addDiegoBucks(id,amt){
+function query(query){
+	try{
+		db.query(query, (err, res) => {
+			if (err) throw err;
+			return res;
+		});
 
+	} catch(err) {
+		console.log(err);
+	}
+	return null;
 }
 
-function remDiegoBucks(id,amt){
+function query(query,values ){
+	try{
+		db.query(query,values, (err, res) => {
+			if (err) throw err;
+			return res;
+		});
 
+	} catch(err) {
+		console.log(err);
+	}
+	return null;
 }
 
-function getDiegoBucks(id){
+async function aQuery(query){
+	try{
+		db.query(query, (err, res) => {
+			if (err) throw err;
+			return res;
+		});
 
+	} catch(err) {
+		console.log(err);
+	}
+	return "Error";
 }
+async function aQuery(query,values){
+	try{
+		db.query(query,values,(err, res) => {
+			if (err) throw err;
+			return res;
+		});
 
-module.exports = {
-	getProfile,
-	saveProfile,
-	addDiegoBucks,
-	remDiegoBucks,
-	getDiegoBucks
+	} catch(err) {
+		console.log(err);
+	}
+	return "Error";
+}
+module.exports= {
+	init,
+	query
 };
-//var cnt = getDiegoBucks("tester");
-//console.log(cnt);

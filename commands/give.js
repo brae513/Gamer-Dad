@@ -1,5 +1,4 @@
-const fetch = require('node-fetch');
-const fs = require('fs');
+
 
 module.exports = {
 	name: 'give',
@@ -15,6 +14,12 @@ module.exports = {
 				console.log(args);
 				var target = args[1];
 				var amt = args[2];
+				if(amt<0){
+					message.react(message.guild.emojis.cache.get('699139118826913794'));
+				}
+				else{
+					
+				}
 				console.log(target);
 			}
 		}catch(err){

@@ -3,9 +3,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const commandUtil = require('./utils/commandUtil');
-const profile = require('./utils/profile.js');
-
-//const db = require('quick.db');
+const db = require('./utils/database.js');
 
 
 const prefix = "!"
@@ -84,7 +82,14 @@ function newYearsReminder(){
 	}
 }
 
+function hourlyUpdates(){
+	var date = new Date();
+	console.log("Commencing hourly updates for:"+date.getMonth()+"/"+date.getDate()+":"+date.getHours());
+	
+}
+
 client.setInterval(newYearsReminder,1000)
+client.setInterval(hourlyUpdates(),
 
 client.on('ready', () => {
 
@@ -95,23 +100,8 @@ client.on('ready', () => {
 			guild.channels.resolve('190981291192090624').send("New build ready!");
 		});
 		
-		const { Pool } = require ('pg');  
-		const pool = new Pool({
-			connectionString: process.env.DATABASE_URL,
-			ssl: {
-				rejectUnauthorized: false
-			}
-		});
+		db.init();
 		
-		profile.init(pool);
-		
-		pool.connect();
-		/*pool.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-			if (err) throw err;
-			for (let row of res.rows) {
-				console.log(JSON.stringify(row));
-			}
-		});*/
 	} catch(err){
 		console.log("error in startup");
 		console.log(err.stack);
@@ -260,21 +250,6 @@ client.on('message', message => {
 			}
 			if(content.indexOf('joeboi') >=0 || content.indexOf('joedust')>=0){
 				message.channel.send("joeboi");
-			}
-			/*if(content.indexOf('/kill rockdust')>=0){
-				message.guild.members.fetch('378445325351780366')
-					.then(mem =>{
-						mem.voice.kick();
-					});
-				message.guild.members.fetch('385963850719035413')
-					.then(mem =>{
-						mem.voice.kick();
-					});
-			}*/
-			if(Math.random()<=0.03){
-				for(var i=0;i<3;i++){
-					//message.guild.channels.resolve("618845562262913066").send("<@184876569054019584> <@378445325351780366> Rockdust");
-				}
 			}
 			
 		}
