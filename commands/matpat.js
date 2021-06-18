@@ -20,6 +20,9 @@ module.exports = {
 				else if(message.author.id === '378445325351780366'){
 					message.channel.send("https://tenor.com/view/bingus-binguscord-gif-18769468");
 				}
+				else if(message.author.id ==== '385963850719035413'){
+					message.channel.send("https://cdn.discordapp.com/attachments/796384999658094653/817487962064289872/makesweet.gif");
+				}
 				else{
 					message.channel.send("https://cdn.discordapp.com/attachments/671036045135183882/814045111062233128/makesweet_1.gif");
 				}
