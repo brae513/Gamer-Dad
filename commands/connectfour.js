@@ -290,33 +290,3 @@ function aiMove(vals){
 		return place(vals,realMoves[Math.floor(Math.random()*realMoves.length)],'X');
 	}
 }
-
-/*var board = getBoard(startVals);
-console.log(board+"\n");
-var vals = getVals(board);
-console.log(checkVals(vals));
-for(var i=0;i<5;i++){
-	if(i!=2){
-		if(i!=3 && i!=4)
-		vals=place(vals,i,'O');
-		else
-		vals=place(vals,i,'X');
-		if(i!=1)
-			vals=place(vals,i,'O');
-		else
-			vals=place(vals,i,'X');
-		vals=place(vals,i,'O');
-	}
-}
-vals=place(vals,5,'O');
-vals=place(vals,5,'X');
-vals=place(vals,5,'O');
-vals=place(vals,5,'O');
-vals=place(vals,6,'O');
-vals=place(vals,6,'X');
-vals=place(vals,6,'X');
-console.log(getBoard(vals));
-console.log(checkVals(vals));
-
-console.log(getBoard(aiMove(vals)));
-*/

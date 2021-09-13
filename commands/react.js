@@ -5,7 +5,7 @@ module.exports = {
 	description: 'reacts to your message',
 	random:false,
 	client:true,
-	execute(client,message, args) {
+	execute(client, message, args) {
 		try{
 			if(args.length!=1){
 				message.channel.send("invalid usage, correct usage is !react (reactionID)");
