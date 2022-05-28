@@ -154,12 +154,12 @@ const bdays = {
 client.on('voiceStateUpdate',(oldState, newState) => {
 	try{
 		if(newState.member.id in bdays){
-			console.log(newState.connection);
 			if(newState.channel != null && oldState.channel === null && newState.guild.id =='599851762400362517'){
 				var now = new Date();
 				var bday = bdays[newState.member.id]
 				now.setTime(now.getTime()-(8*60*60*1000));
-				if(now.getMonth()==bday["month"]-1 && now.getDate()==bday["day"]-1){
+				console.log(now)
+				if(now.getMonth()==bday["month"]-1 && now.getDate()==bday["day"]){
 					client.guilds.fetch('599851762400362517').then(guild =>{
 						guild.channels.resolve('618845562262913066').send(`https://itsyourbirthday.today/#${bday["name"]} <@${newState.member.id}>`);
 					});
