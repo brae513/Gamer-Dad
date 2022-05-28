@@ -143,12 +143,12 @@ const bdays = {
 		"month":2,
 		"day":-1,
 		"name":"Erick"
-	}
+	},
 	"385963850719035413":{
 		"month":5,
-		"day":28,
+		"day":27,
 		"name":"Brae"
-	},
+	}
 }
 
 client.on('voiceStateUpdate',(oldState, newState) => {
@@ -158,7 +158,7 @@ client.on('voiceStateUpdate',(oldState, newState) => {
 			if(newState.channel != null && oldState.channel === null && newState.guild.id =='599851762400362517'){
 				var now = new Date();
 				var bday = bdays[newState.member.id]
-				now.setHours(now.getHours()-8);
+				now.setTime(now.getTime()-(8*60*60*1000));
 				if(now.getMonth()==bday["month"]-1 && now.getDate()==bday["day"]-1){
 					client.guilds.fetch('599851762400362517').then(guild =>{
 						guild.channels.resolve('618845562262913066').send(`https://itsyourbirthday.today/#${bday["name"]} <@${newState.member.id}>`);
