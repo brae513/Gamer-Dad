@@ -156,7 +156,7 @@ client.on('voiceStateUpdate',(oldState, newState) => {
 				now.setHours(now.getHours()-8);
 				if(now.getMonth()==bday["month"]-1 && now.getDate()==bday["day"]-1){
 					client.guilds.fetch('599851762400362517').then(guild =>{
-						guild.channels.resolve('618845562262913066').send(`https://itsyourbirthday.today/#${bday["name"} <@${newState.member.id}>`);
+						guild.channels.resolve('618845562262913066').send(`https://itsyourbirthday.today/#${bday["name"]} <@${newState.member.id}>`);
 					});
 				}
 			}
