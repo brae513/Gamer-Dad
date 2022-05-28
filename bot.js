@@ -108,26 +108,57 @@ client.on('ready', () => {
 	}
 });
 
+const bdays = {
+	"135648747815305217":{
+		"month":5,
+		"day":7,
+		"name":"Smeag"
+	},	
+	"163297954822750208":{
+		"month":10,
+		"day":10,
+		"name":"Race"
+	},
+	"378445325351780366":{
+		"month":9,
+		"day":23,
+		"name":"Diego"
+	},
+	"586033322942267402":{
+		"month":12,
+		"day":3,
+		"name":"Kaleb"
+	},
+	"300041614322040842":{
+		"month":1,
+		"day":3,
+		"name":"Dom"
+	},
+	"385963850719035413":{
+		"month":11,
+		"day":-1,
+		"name":"Marc"
+	},
+	"384866638597718019":{
+		"month":2,
+		"day":-1,
+		"name":"Erick"
+	}
+}
+
 client.on('voiceStateUpdate',(oldState, newState) => {
 	try{
-		if(newState.member.id === '135648747815305217'){
+		if(newState.member.id in bdays){
 			console.log(newState.connection);
 			if(newState.channel != null && oldState.channel === null && newState.guild.id =='599851762400362517'){
 				var now = new Date();
+				var bday = bdays[newState.member.id]
 				now.setHours(now.getHours()-8);
-				if(now.getMonth()==4 && now.getDate()==7){
+				if(now.getMonth()==bday["month"]-1 && now.getDate()==bday["day"]-1){
 					client.guilds.fetch('599851762400362517').then(guild =>{
-						guild.channels.resolve('618845562262913066').send("https://itsyourbirthday.today/#smeag <@135648747815305217>");
+						guild.channels.resolve('618845562262913066').send(`https://itsyourbirthday.today/#${bday["name"} <@${newState.member.id}>`);
 					});
 				}
-				client.guilds.fetch('599851762400362517').then(guild =>{
-					guild.channels.resolve('618845562262913066').send("https://tenor.com/view/alex-alex-is-alex-is-online-discord-alex-discor-gif-18621584");
-				});
-			}
-			else if(newState.channel === null && oldState.channel != null && oldState.guild.id =='599851762400362517'){
-				client.guilds.fetch('599851762400362517').then(guild =>{
-					guild.channels.resolve('618845562262913066').send("https://tenor.com/view/alex-alex-is-offline-alex-is-online-gif-19938100");
-				});
 			}
 		}
 	} catch (err){
