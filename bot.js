@@ -144,6 +144,11 @@ const bdays = {
 		"day":-1,
 		"name":"Erick"
 	}
+	"385963850719035413":{
+		"month":5,
+		"day":28,
+		"name":"Brae"
+	},
 }
 
 client.on('voiceStateUpdate',(oldState, newState) => {
