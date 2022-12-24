@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const commandUtil = require('./utils/commandUtil');
-const db = require('./utils/database.js');
+//const db = require('./utils/database.js');
 
 
 const prefix = "!"
@@ -22,7 +22,7 @@ function newYearsReminder(){
 		if(new Date().getMonth()==0 && new Date().getDate()==1){
 			year--;
 		}
-		var nextNewYears = "Jan 1, "+year+" 08:00:00";
+		var nextNewYears = "Jan 1, "+year+" 00:00:00";
 		var countDownDate = new Date(nextNewYears).getTime();
 		var now = new Date().getTime();
 
@@ -100,7 +100,7 @@ client.on('ready', () => {
 			guild.channels.resolve('190981291192090624').send("New build ready!");
 		});
 		
-		db.init();
+		//db.init();
 		
 	} catch(err){
 		console.log("error in startup");
@@ -135,8 +135,8 @@ const bdays = {
 		"name":"Dom"
 	},
 	"385963850719035413":{
-		"month":5,
-		"day":27,
+		"month":11,
+		"day":-1,
 		"name":"Marc"
 	},
 	"384866638597718019":{
@@ -321,5 +321,4 @@ client.on('message', message => {
  
 
 // THIS  MUST  BE  THIS  WAY
-
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
