@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const fs = require('fs');
+const intentBits = Discord.GatewayIntentBits;
 
 const commandUtil = require('./utils/commandUtil');
 //const db = require('./utils/database.js');
@@ -8,10 +9,28 @@ const commandUtil = require('./utils/commandUtil');
 
 const prefix = "!"
 
-const client = new Discord.Client();
+const client = new Discord.Client({ 
+	intents: [
+		intentBits.Guilds,
+		intentBits.GuildMembers,
+		intentBits.GuildModeration ,
+		intentBits.GuildIntegrations,
+		intentBits.GuildEmojisAndStickers ,
+		intentBits.GuildVoiceStates ,
+		intentBits.GuildPresences ,
+		intentBits.GuildMessages  ,
+		intentBits.GuildMessageReactions  ,
+		intentBits.DirectMessages  ,
+		intentBits.DirectMessageReactions  ,
+		intentBits.MessageContent  ,
+	], 
+	partials: [Discord.Partials.Channel], });
+
 client.commands = new Discord.Collection();
+
 //const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 commandUtil.init();
+
 for (const command of commandUtil.getCommands()) {
 	client.commands.set(command.name, command);
 }
@@ -80,16 +99,23 @@ function newYearsReminder(){
 		console.log("error");
 		console.log(err.stack);
 	}
+	setTimeout(() => { 
+		newYearsReminder();
+	},1_000)
 }
 
 function hourlyUpdates(){
 	var date = new Date();
 	console.log("Commencing hourly updates for:"+date.getMonth()+"/"+date.getDate()+":"+date.getHours());
-	
+	setTimeout(() => { 
+		hourlyUpdates();
+	},1_000*60*60)
 }
-
-client.setInterval(newYearsReminder,1000);
-client.setInterval(hourlyUpdates,3600000);
+// TODO Find replacement for this
+//client.setInterval(newYearsReminder,1000);
+newYearsReminder();
+hourlyUpdates();
+//client.setInterval(hourlyUpdates,3600000);
 
 client.on('ready', () => {
 
@@ -245,7 +271,7 @@ client.on('messageUpdate', (oldMessage, message) =>{
 	}
 });
 
-client.on('message', message => {
+client.on('messageCreate', message => {
 	try{
 		if( message.author.bot) return;
 		if(message.guild != null && message.guild.id === '599851762400362517'){
