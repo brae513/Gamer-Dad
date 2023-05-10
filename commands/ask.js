@@ -1,4 +1,4 @@
-const chatGpt = require('../utils/chatGpt');
+const chatGpt = require('../utils/chatgpt');
 const aiVoice = require('../utils/aiVoice');
 
 
