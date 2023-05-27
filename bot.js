@@ -37,16 +37,15 @@ for (const command of commandUtil.getCommands()) {
 
 function newYearsReminder(){
 	try{
-		currentDate = new Date().toLocaleString('en-US', {
-		  timeZone: 'America/Los_Angeles'
-		});
+		var currentDate = new Date();
+		currentDate.setTimezone("America/Los_Angeles");
 		var year = 1901+ currentDate.getYear();
-		if(ncurrentDate.getMonth()==0 && currentDate.getDate()==1){
+		if(new Date().getMonth()==0 && currentDate.getDate()==1){
 			year--;
 		}
-		var nextNewYears = "Jan 1, "+year+" 00:00:00";
+		var nextNewYears = "Jan 1, "+year+" 00:00:00 GMT";
 		var countDownDate = new Date(nextNewYears).getTime();
-		var now = currentDate.toLocale.getTime();
+		var now = currentDate.getTime();
 
 		// Find the distance between now and the count down date
 		var distance = countDownDate - now;
@@ -108,9 +107,8 @@ function newYearsReminder(){
 }
 
 function hourlyUpdates(){
-	var date = new Date().toLocaleString('en-US', {
-	  timeZone: 'America/Los_Angeles'
-	});
+	var date = new Date();
+	date.setTimezone("America/Los_Angeles");
 	console.log("Commencing hourly updates for:"+date.getMonth()+"/"+date.getDate()+":"+date.getHours());
 	setTimeout(() => { 
 		hourlyUpdates();
