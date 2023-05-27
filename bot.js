@@ -39,7 +39,7 @@ function newYearsReminder(){
 	try{
 		currentDate = new Date().toLocaleString('en-US', {
 		  timeZone: 'America/Los_Angeles'
-		}
+		});
 		var year = 1901+ currentDate.getYear();
 		if(ncurrentDate.getMonth()==0 && currentDate.getDate()==1){
 			year--;
@@ -110,7 +110,7 @@ function newYearsReminder(){
 function hourlyUpdates(){
 	var date = new Date().toLocaleString('en-US', {
 	  timeZone: 'America/Los_Angeles'
-	};
+	});
 	console.log("Commencing hourly updates for:"+date.getMonth()+"/"+date.getDate()+":"+date.getHours());
 	setTimeout(() => { 
 		hourlyUpdates();
