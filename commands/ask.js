@@ -42,7 +42,7 @@ module.exports = {
 						// subscription could be undefined if the connection is destroyed!
 						if (subscription) {
 							// Unsubscribe after 5 seconds (stop playing audio on the voice connection)
-							setTimeout(() => {subscription.unsubscribe();connection.destroy()}, 5_000);
+							setTimeout(() => {subscription.unsubscribe();connection.destroy()}, 15_000);
 						}
 					}, 3_000);
 				});

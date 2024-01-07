@@ -75,7 +75,7 @@ function newYearsReminder(){
 			}
 		}
 		else if(minutes>0){
-			if(seconds<1 && seconds>-1){
+			if(seconds<1 && seconds>-1 && (minutes % 5 == 0 || minutes < 5)){
 				client.guilds.fetch('599851762400362517').then(guild=>{
 					console.log("new years reminder");
 					guild.channels.resolve('618845562262913066').send(str);
@@ -83,10 +83,12 @@ function newYearsReminder(){
 			}
 		}
 		else if(seconds>0){
-			client.guilds.fetch('599851762400362517').then(guild=>{
-				console.log("new years reminder");
-				guild.channels.resolve('618845562262913066').send(str);
-			});
+			if(seconds % 5 == 0 || seconds <= 3){
+				client.guilds.fetch('599851762400362517').then(guild=>{
+					console.log("new years reminder");
+					guild.channels.resolve('618845562262913066').send(str);
+				});
+			}
 		}
 		else if(distance > -1){
 			client.guilds.fetch('599851762400362517').then(guild=>{
@@ -248,6 +250,26 @@ client.on('messageReactionAdd', (reaction,user) => {
 				message.react(message.guild.emojis.cache.get('699139118826913794')).then();
 			}
 		}
+		if(message.guild != null && message.guild.id === '599851762400362517'){
+			console.log(message.reactions.resolve('709979168598786049'))
+
+			if(reaction.emoji.name===('🪟') && reaction.count >=5){
+				if(message.author.id === '361870559576850432'){
+					if(message.reactions.resolve('709979168598786049') && message.reactions.resolve('709979168598786049').me){
+						return;
+					}
+					else{
+						message.react(message.guild.emojis.cache.get('709979168598786049')).then();
+					}
+				}
+				else if(reaction.me){
+					return;
+				}
+				console.log(reaction)
+				message.reply("Mac user")
+				message.react('🪟');
+			}
+		}
 	} catch (err){
 		console.log(err.stack);
 	}
@@ -274,7 +296,8 @@ client.on('messageUpdate', (oldMessage, message) =>{
 
 client.on('messageCreate', message => {
 	try{
-		if( message.author.bot) return;
+		if(message.author.bot) return;
+		
 		if(message.guild != null && message.guild.id === '599851762400362517'){
 			// 618845562262913066 bot channel
 
@@ -283,7 +306,43 @@ client.on('messageCreate', message => {
 				if(Math.random()<0.01){
 					message.channel.send("https://cdn.discordapp.com/emojis/807855187318407179.gif?v=1");
 				}
+				if(Math.random()<0.05){
+					message.react('👎');
+				}
 			}
+			if(message.author.id === '361870559576850432'){
+				if(Math.random()<0.01){
+					message.react('🪟');
+					channel = message.member.voice.channel;
+					if(channel){
+						//client.commands.get("say").execute(message,["l","o","l","mack","user"])
+						const { AudioPlayerStatus, joinVoiceChannel, createAudioPlayer, NoSubscriberBehavior, createAudioResource } = require('@discordjs/voice');
+						console.log("Creating connection")
+						const resource = createAudioResource("MacUser.mp3");
+						const player = createAudioPlayer({
+							behaviors: {
+								noSubscriber: NoSubscriberBehavior.Pause,
+							},
+						});
+						const connection = joinVoiceChannel({
+							channelId: channel.id,
+							guildId: channel.guild.id,
+							adapterCreator: channel.guild.voiceAdapterCreator,
+						});
+						const subscription = connection.subscribe(player);
+						player.play(resource);
+
+						if (subscription) {
+								player.on(AudioPlayerStatus.Idle, () => {
+								console.log("Leaving call");
+								subscription.unsubscribe();
+								connection.destroy();
+							});
+						}
+					}
+				}
+			}
+
 			if(message.author.id === '147136628215775233'){
 				message.react(message.guild.emojis.cache.get('699139118826913794'));
 				message.react(message.guild.emojis.cache.get('768625855286476812'));
@@ -346,6 +405,5 @@ client.on('messageCreate', message => {
 
 
  
-
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
